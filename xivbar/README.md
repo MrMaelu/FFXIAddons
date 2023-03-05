@@ -50,5 +50,6 @@ New functions:
 1. Displays weapon type icon (default uses Empyrean Weapon icons)
 2. Displays current job icon (default uses AF headgear)
 3. The TP bar is split in 3.
+4. All the bars are separate and are handled independently to allow more placement options.
 
 ![xvibar XVI](https://i.ibb.co/zSdcwr6/image-2023-03-05-033756309.png)
