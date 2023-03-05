@@ -111,11 +111,21 @@ function update_bar(bar, text, width, current, pp, flag)
 				--xivbar.update_hp = false
                 xivbar.hp_bar_width = x
 				bar:size(x, 12)
+				if x == theme_options.hp_bar_width then
+					bar:alpha(255)
+				else
+					bar:alpha(100)
+				end
 				bar:show()
             elseif flag == 2 then
 				--xivbar.update_mp = false
                 xivbar.mp_bar_width = x
 				bar:size(x, 12)
+				if x == theme_options.mp_bar_width then
+					bar:alpha(255)
+				else
+					bar:alpha(100)
+				end
 				bar:show()
             elseif flag == 5 then
 				--xivbar.update_tp = false
@@ -157,7 +167,7 @@ function update_bar(bar, text, width, current, pp, flag)
 				ui.tp_bar2:hide()
 				ui.tp_bar3:hide()
             end
-			
+		
         end
     end
 
