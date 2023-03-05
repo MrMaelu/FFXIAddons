@@ -297,7 +297,13 @@ end)
 
 
 
--- weapon check
+--[[ weapon check
+Code is taken from :
+_addon.author = 'Ivaar'
+_addon.command = 'sc'
+_addon.name = 'SkillChains'
+_addon.version = '2.20.08.25'
+--]]
 
 info = {}
 local weapon = 0
