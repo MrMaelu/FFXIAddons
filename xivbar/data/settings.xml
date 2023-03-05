@@ -1,0 +1,50 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <Bars>
+            <OffsetX>-180</OffsetX>
+            <OffsetY>-280</OffsetY>
+        </Bars>
+        <Texts>
+            <Color>
+                <Alpha>255</Alpha>
+                <Blue>250</Blue>
+                <Green>252</Green>
+                <Red>253</Red>
+            </Color>
+            <Font>Segoe UI</Font>
+            <FullTpColor>
+                <Blue>250</Blue>
+                <Green>180</Green>
+                <Red>80</Red>
+            </FullTpColor>
+            <Offset>0</Offset>
+            <Size>14</Size>
+            <Stroke>
+                <Alpha>0</Alpha>
+                <Blue>0</Blue>
+                <Green>0</Green>
+                <Red>0</Red>
+                <Width>2</Width>
+            </Stroke>
+        </Texts>
+        <Theme>
+            <Bar>
+                <Compact>
+                    <Offset>0</Offset>
+                    <Spacing>0</Spacing>
+                    <Width>0</Width>
+                </Compact>
+                <Offset>0</Offset>
+                <Spacing>0</Spacing>
+                <Width>656</Width>
+                <hpwidth>656</hpwidth>
+                <mpwidth>656</mpwidth>
+                <tpwidth>185</tpwidth>
+            </Bar>
+            <Compact>false</Compact>
+            <DimTpBar>true</DimTpBar>
+            <Name>XVI</Name>
+        </Theme>
+    </global>
+</settings>

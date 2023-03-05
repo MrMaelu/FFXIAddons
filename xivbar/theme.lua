@@ -31,15 +31,21 @@ local theme = {}
 theme.apply = function (settings)
     local options = {}
 
-    options.total_height = 8
-    options.total_width = 472
+    options.total_height = 92
+    options.total_width = 812
     options.offset_x = settings.Bars.OffsetX
     options.offset_y = settings.Bars.OffsetY
 
     options.bar_background = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/bar_bg.png'
+    options.bar_foreground = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/bar_fg.png'
     options.bar_hp = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/hp_fg.png'
     options.bar_mp = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/mp_fg.png'
-    options.bar_tp = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/tp_fg.png'
+    options.bar_tp1 = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/tp1_fg.png'
+	options.bar_tp2 = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/tp2_fg.png'
+	options.bar_tp3 = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/tp3_fg.png'
+	
+	options.bar_jobicon = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/0.png'
+	options.bar_weaponicon = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/w0.png'
 
     options.font = settings.Texts.Font
     options.font_size = settings.Texts.Size
@@ -57,26 +63,17 @@ theme.apply = function (settings)
     options.full_tp_color_blue = settings.Texts.FullTpColor.Blue
     options.text_offset = settings.Texts.Offset
 
-    options.bar_width = settings.Theme.Bar.Width
+-- With is hard coded since I could not make it work from the settings file.
+    options.hp_bar_width = 656
+	options.mp_bar_width = 656
+	options.tp_bar1_width = 185
+	options.tp_bar2_width = 185
+	options.tp_bar3_width = 185
+
     options.bar_spacing = settings.Theme.Bar.Spacing
     options.bar_offset = settings.Theme.Bar.Offset
 
     options.dim_tp_bar = settings.Theme.DimTpBar
-
-    if settings.Theme.Compact then
-        options.bar_background = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/bar_compact.png'
-        options.total_width = 422
-        options.bar_width = settings.Theme.Bar.Compact.Width
-        options.bar_spacing = settings.Theme.Bar.Compact.Spacing
-        options.bar_offset = settings.Theme.Bar.Compact.Offset
-    end
-
-    if settings.Theme.Name == 'ffxiv' then
-        options.font_stroke_alpha = 150
-        options.font_stroke_color_red = 80
-        options.font_stroke_color_green = 70
-        options.font_stroke_color_blue = 30
-    end
 
     return options
 end

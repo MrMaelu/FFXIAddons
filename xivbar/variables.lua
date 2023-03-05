@@ -37,6 +37,8 @@ control.update_mp = false
 control.update_tp = false
 control.hp_bar_width = 0
 control.mp_bar_width = 0
-control.tp_bar_width = 0
+control.tp_bar1_width = 0
+control.tp_bar2_width = 0
+control.tp_bar3_width = 0
 
 return control

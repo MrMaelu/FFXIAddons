@@ -27,7 +27,7 @@
 ]]
 
 -- Addon description
-_addon.name = 'XIV Bar'
+_addon.name = 'XVI Bar'
 _addon.author = 'Edeon'
 _addon.version = '1.0'
 _addon.language = 'english'
@@ -36,6 +36,7 @@ _addon.language = 'english'
 config = require('config')
 texts  = require('texts')
 images = require('images')
+res = require('resources')
 
 -- User settings
 local defaults = require('defaults')
@@ -63,7 +64,7 @@ function initialize()
         player.current_hp = windower_player.vitals.hp
         player.current_mp = windower_player.vitals.mp
         player.current_tp = windower_player.vitals.tp
-
+		player.job = windower.ffxi.get_player().main_job_id
         player:calculate_tpp()
     end
 
@@ -73,52 +74,94 @@ end
 -- update a bar
 function update_bar(bar, text, width, current, pp, flag)
     local old_width = width
-    local new_width = math.floor((pp / 100) * theme_options.bar_width)
+
+	if flag == 1 then
+		new_width = math.floor((pp / 100) * theme_options.hp_bar_width)
+	elseif flag == 2 then
+		new_width = math.floor((pp / 100) * theme_options.mp_bar_width)
+	elseif flag >= 3 then
+		new_width = math.floor((pp / 100) * theme_options.tp_bar1_width)
+	end
 
     if new_width ~= nil and new_width >= 0 then
         if old_width == new_width then
             if new_width == 0 then
                 bar:hide()
             end
-
-            if flag == 1 then
-                xivbar.hp_update = false
-            elseif flag == 2 then
-                xivbar.update_mp = false
-            elseif flag == 3 then
-                xivbar.update_tp = false
-            end
+			
         else
             local x = old_width
 
             if old_width < new_width then
-                x = old_width + math.ceil(((new_width - old_width) * 0.1))
-
-                if x > theme_options.bar_width then
-                    x = theme_options.bar_width
-                end
+                x = old_width + math.ceil((new_width - old_width) * 0.1)
+				if flag == 1 then
+                x = math.min(x, theme_options.hp_bar_width)
+				elseif flag == 2 then
+				x = math.min(x, theme_options.mp_bar_width)
+				elseif flag >= 3 then
+				x = math.min(x, theme_options.tp_bar1_width)
+				end
             elseif old_width > new_width then
-                x = old_width - math.ceil(((old_width - new_width) * 0.1))
+                x = old_width - math.ceil((old_width - new_width) * 0.1)
 
-                if x < 0 then
-                    x = 0
-                end
+                x = math.max(x, 0)
             end
 
             if flag == 1 then
+				--xivbar.update_hp = false
                 xivbar.hp_bar_width = x
+				bar:size(x, 12)
+				bar:show()
             elseif flag == 2 then
+				--xivbar.update_mp = false
                 xivbar.mp_bar_width = x
-            elseif flag == 3 then
-                xivbar.tp_bar_width = x
-            end
+				bar:size(x, 12)
+				bar:show()
+            elseif flag == 5 then
+				--xivbar.update_tp = false
+				xivbar.tp_bar1_width = theme_options.tp_bar1_width
+				xivbar.tp_bar2_width = theme_options.tp_bar2_width
+				xivbar.tp_bar3_width = x
 
-            bar:size(x, theme_options.total_height)
-            bar:show()
+				ui.tp_bar1:size(theme_options.tp_bar1_width,13)
+				ui.tp_bar2:size(theme_options.tp_bar2_width,13)
+				ui.tp_bar3:size(x, 13)
+				
+				ui.tp_bar1:show()
+				ui.tp_bar2:show()
+				ui.tp_bar3:show()				
+			elseif flag == 4 then
+				--xivbar.update_tp = false
+				xivbar.tp_bar1_width = theme_options.tp_bar1_width
+				xivbar.tp_bar2_width = x
+				xivbar.tp_bar3_width = 0
+				
+				ui.tp_bar1:size(theme_options.tp_bar1_width,13)
+				ui.tp_bar2:size(x,13)
+				ui.tp_bar3:size(0,13)
+				
+				ui.tp_bar1:show()
+				ui.tp_bar2:show()
+				ui.tp_bar3:hide()
+			elseif flag == 3 then
+				--xivbar.update_tp = false
+				xivbar.tp_bar1_width = x
+				xivbar.tp_bar2_width = 0
+				xivbar.tp_bar3_width = 0
+				
+				ui.tp_bar1:size(x,13)
+				ui.tp_bar2:size(0,13)
+				ui.tp_bar3:size(0,13)
+				
+				ui.tp_bar1:show()
+				ui.tp_bar2:hide()
+				ui.tp_bar3:hide()
+            end
+			
         end
     end
 
-    if flag == 3 and current >= 1000 then
+    if flag >= 3 and current >= 1000 then
         text:color(theme_options.full_tp_color_red, theme_options.full_tp_color_green, theme_options.full_tp_color_blue)
         if theme_options.dim_tp_bar then bar:alpha(255) end
     else
@@ -127,7 +170,21 @@ function update_bar(bar, text, width, current, pp, flag)
     end
 
     text:text(tostring(current))
+
 end
+
+-- Updates the job icon. Hides TP bar since it shows as full after changing.
+function update_job(job)
+	xivbar.update_job = false
+	ui:hide()
+	theme_options.bar_jobicon = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/' .. job .. '.png'
+	initialize()
+	ui:show()
+	ui.tp_bar1:hide()
+	ui.tp_bar2:hide()
+	ui.tp_bar3:hide()
+end
+
 
 -- hide the addon
 function hide()
@@ -146,8 +203,8 @@ function show()
     xivbar.update_hp = true
     xivbar.update_mp = true
     xivbar.update_tp = true
+	xivbar.update_job = true
 end
-
 
 -- Bind Events
 -- ON LOAD
@@ -195,6 +252,11 @@ windower.register_event('tp change', function(new, old)
     xivbar.update_tp = true
 end)
 
+windower.register_event('job change', function(new)
+	player.job = new
+	xivbar.update_job = true
+end)
+
 windower.register_event('prerender', function()
     if xivbar.ready == false then
         return
@@ -209,8 +271,18 @@ windower.register_event('prerender', function()
     end
 
     if xivbar.update_tp then
-        update_bar(ui.tp_bar, ui.tp_text, xivbar.tp_bar_width, player.current_tp, player.tpp, 3)
+		update_bar(ui.tp_bar1, ui.tp_text, xivbar.tp_bar1_width, player.current_tp, player.tpp1, 3)
+		update_bar(ui.tp_bar2, ui.tp_text, xivbar.tp_bar2_width, player.current_tp, player.tpp2, 4)
+		update_bar(ui.tp_bar3, ui.tp_text, xivbar.tp_bar3_width, player.current_tp, player.tpp3, 5)
+		--print(ui.tp_bar1, ui.tp_text, xivbar.tp_bar1_width, player.current_tp, player.tpp1, 3)
+		--print(ui.tp_bar2, ui.tp_text, xivbar.tp_bar2_width, player.current_tp, player.tpp2, 4)
+		--print(ui.tp_bar3, ui.tp_text, xivbar.tp_bar3_width, player.current_tp, player.tpp3, 5)
     end
+
+	if xivbar.update_job then
+		update_job(player.job)
+	end
+
 end)
 
 windower.register_event('status change', function(new_status_id)
@@ -222,3 +294,61 @@ windower.register_event('status change', function(new_status_id)
         show()
     end
 end)
+
+
+
+-- weapon check
+
+info = {}
+local weapon = 0
+local equip = windower.ffxi.get_items('equipment')
+info.main_weapon = equip.main
+info.main_bag = equip.main_bag
+
+windower.register_event('incoming chunk', function(id, data)
+	if id == 0x50 and data:byte(6) == 0 then
+        info.main_weapon = data:byte(5)
+        info.main_bag = data:byte(7)
+        update_weapon()
+	end
+end)
+
+function update_weapon()
+    local main_weapon = windower.ffxi.get_items(info.main_bag, info.main_weapon).id
+--    if not check_weapon or coroutine.status(check_weapon) ~= 'suspended' then
+--        check_weapon = coroutine.schedule(update_weapon, 10)
+--    end
+	skill = res.items[main_weapon].skill
+	theme_options.bar_weaponicon = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/' .. skill .. 'w.png'
+	initialize()
+	ui:show()
+	ui.tp_bar1:hide()
+	ui.tp_bar2:hide()
+	ui.tp_bar3:hide()
+end
+
+windower.register_event('load', function()
+    if windower.ffxi.get_info().logged_in then
+        local equip = windower.ffxi.get_items('equipment')
+        info.main_weapon = equip.main
+        info.main_bag = equip.main_bag
+        info.range = equip.range
+        info.range_bag = equip.range_bag
+        update_weapon()
+    end
+end)
+--[[
+windower.register_event('unload', function()
+    coroutine.close(check_weapon)
+end)
+
+windower.register_event('logout', function()
+    coroutine.close(check_weapon)
+    check_weapon = nil
+    info = {}
+end)
+
+
+
+
+--]]

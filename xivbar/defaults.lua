@@ -33,15 +33,15 @@ defaults.Bars.OffsetX = 0
 defaults.Bars.OffsetY = 0
 
 defaults.Theme = {}
-defaults.Theme.Name = 'ffxiv'
-defaults.Theme.Compact = false
+defaults.Theme.Name = 'XVI'
+defaults.Theme.Compact = true
 defaults.Theme.Bar = {}
-defaults.Theme.Bar.Width = 132
+defaults.Theme.Bar.Width = 656
 defaults.Theme.Bar.Spacing = 18
 defaults.Theme.Bar.Offset = 0
 defaults.Theme.Bar.Compact = {}
-defaults.Theme.Bar.Compact.Width = 116
-defaults.Theme.Bar.Compact.Spacing = 16
+defaults.Theme.Bar.Compact.Width = 132
+defaults.Theme.Bar.Compact.Spacing = 18
 defaults.Theme.Bar.Compact.Offset = 0
 defaults.Theme.DimTpBar = true
 

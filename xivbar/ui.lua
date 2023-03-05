@@ -44,11 +44,19 @@ ui.background = images.new(images_setup)
 
 ui.hp_bar = images.new(images_setup)
 ui.mp_bar = images.new(images_setup)
-ui.tp_bar = images.new(images_setup)
+
+ui.tp_bar1 = images.new(images_setup)
+ui.tp_bar2 = images.new(images_setup)
+ui.tp_bar3 = images.new(images_setup)
+
+ui.foreground = images.new(images_setup)
 
 ui.hp_text = texts.new(text_setup)
 ui.mp_text = texts.new(text_setup)
 ui.tp_text = texts.new(text_setup)
+
+ui.jobicon = images.new(images_setup)
+ui.weaponicon = images.new(images_setup)
 
 -- setup images
 function setup_image(image, path)
@@ -76,10 +84,17 @@ end
 -- load the images and text
 function ui:load(theme_options)
     setup_image(self.background, theme_options.bar_background)
+	setup_image(self.foreground, theme_options.bar_foreground)
+	setup_image(self.weaponicon, theme_options.bar_weaponicon)
+	setup_image(self.jobicon, theme_options.bar_jobicon)
     setup_image(self.hp_bar, theme_options.bar_hp)
     setup_image(self.mp_bar, theme_options.bar_mp)
-    setup_image(self.tp_bar, theme_options.bar_tp)
-    setup_text(self.hp_text, theme_options)
+    
+	setup_image(self.tp_bar1, theme_options.bar_tp1)
+	setup_image(self.tp_bar2, theme_options.bar_tp2)
+	setup_image(self.tp_bar3, theme_options.bar_tp3)
+    
+	setup_text(self.hp_text, theme_options)
     setup_text(self.mp_text, theme_options)
     setup_text(self.tp_text, theme_options)
 
@@ -92,38 +107,63 @@ function ui:position(theme_options)
     local y = windower.get_windower_settings().y_res - 60 + theme_options.offset_y
 
     self.background:pos(x, y)
+	self.foreground:pos(x, y)
 
-    self.hp_bar:pos(x + 15 + theme_options.bar_offset, y + 2)
-    self.mp_bar:pos(x + 25 + theme_options.bar_offset + theme_options.bar_width + theme_options.bar_spacing, y + 2)
-    self.tp_bar:pos(x + 35 + theme_options.bar_offset + (theme_options.bar_width*2) + (theme_options.bar_spacing*2), y + 2)
-    self.hp_bar:width(0)
+	self.jobicon:pos(x, y)
+	self.weaponicon:pos(x - 60, y + 15)
+
+    self.hp_bar:pos(x + 150 + theme_options.bar_offset, y +30)
+    self.mp_bar:pos(x + 150 + theme_options.bar_offset, y + 51)
+    
+	self.tp_bar1:pos(x + 163 + theme_options.bar_offset, y + 72)
+	self.tp_bar2:pos(x + 384 + theme_options.bar_offset, y + 72)
+	self.tp_bar3:pos(x + 605 + theme_options.bar_offset, y + 72)
+    
+	self.hp_bar:width(0)
     self.mp_bar:width(0)
-    self.tp_bar:width(0)
+    
+	self.tp_bar1:width(0)
+	self.tp_bar2:width(0)
+	self.tp_bar3:width(0)
 
-    self.hp_text:pos(x + 65 + theme_options.text_offset, self.background:pos_y() + 2)
-    self.mp_text:pos(x + 80 + theme_options.text_offset + theme_options.bar_width + theme_options.bar_spacing, self.background:pos_y() + 2)
-    self.tp_text:pos(x + 90 + theme_options.text_offset + (theme_options.bar_width*2) + (theme_options.bar_spacing*2), self.background:pos_y() + 2)
+    self.hp_text:pos(x + 100 + theme_options.text_offset, self.background:pos_y() - 51)
+    self.mp_text:pos(x + 100 + theme_options.text_offset, self.background:pos_y() - 29)
+    self.tp_text:pos(x + 100 + theme_options.text_offset, self.background:pos_y() - 8)
 end
 
 -- hide ui
 function ui:hide()
     self.background:hide()
+    self.foreground:hide()
+	self.jobicon:hide()
+	self.weaponicon:hide()
     self.hp_bar:hide()
     self.hp_text:hide()
     self.mp_bar:hide()
     self.mp_text:hide()
-    self.tp_bar:hide()
-    self.tp_text:hide()
+    
+	self.tp_bar1:hide()
+    self.tp_bar2:hide()
+	self.tp_bar3:hide()
+	
+	self.tp_text:hide()
 end
 
 -- show ui
 function ui:show()
     self.background:show()
+	self.foreground:show()
+	self.jobicon:show()
+	self.weaponicon:show()
     self.hp_bar:show()
     self.hp_text:show()
     self.mp_bar:show()
     self.mp_text:show()
-    self.tp_bar:show()
+
+	self.tp_bar1:show()
+    self.tp_bar2:show()
+	self.tp_bar3:show()
+
     self.tp_text:show()
 end
 

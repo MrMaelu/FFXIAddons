@@ -30,21 +30,18 @@ local player = {}
 
 player.hpp = 0
 player.mpp = 0
-player.tpp = 0
+player.tpp1 = 0
+player.tpp2 = 0
+player.tpp3 = 0
 player.current_hp = 0
 player.current_mp = 0
 player.current_tp = 0
+player.job = 0
 
 function player:calculate_tpp()
-    self.tpp = self.current_tp
-
-    if self.current_tp ~= 0 then
-        self.tpp = self.current_tp / 10
-
-        if self.tpp > 100 then
-            self.tpp = 100
-        end
-    end
+    self.tpp1 = math.min(self.current_tp / 10, 100)
+	self.tpp2 = math.min(math.max((self.current_tp - 1000) / 10,0),100)
+	self.tpp3 = math.max((self.current_tp - 2000) / 10,0)
 end
 
 return player
