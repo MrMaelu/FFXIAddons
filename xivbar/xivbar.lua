@@ -27,7 +27,7 @@
 ]]
 
 -- Addon description
-_addon.name = 'XVI Bar'
+_addon.name = 'XIV Bar'
 _addon.author = 'Edeon'
 _addon.version = '1.0'
 _addon.language = 'english'
@@ -163,11 +163,23 @@ function update_bar(bar, text, width, current, pp, flag)
 
     if flag >= 3 and current >= 1000 then
         text:color(theme_options.full_tp_color_red, theme_options.full_tp_color_green, theme_options.full_tp_color_blue)
-        if theme_options.dim_tp_bar then bar:alpha(255) end
+        if theme_options.dim_tp_bar then ui.tp_bar1:alpha(255) end
     else
         text:color(theme_options.font_color_red, theme_options.font_color_green, theme_options.font_color_blue)
-        if theme_options.dim_tp_bar then bar:alpha(180) end
+        if theme_options.dim_tp_bar then ui.tp_bar1:alpha(128) end
     end
+	
+	if flag >= 3 and current >= 2000 then
+		if theme_options.dim_tp_bar then ui.tp_bar2:alpha(255) end
+	else
+		if theme_options.dim_tp_bar then ui.tp_bar2:alpha(128) end
+	end
+	
+	if flag >= 3 and current >= 3000 then
+		if theme_options.dim_tp_bar then ui.tp_bar3:alpha(255) end
+	else
+		if theme_options.dim_tp_bar then ui.tp_bar3:alpha(128) end
+	end
 
     text:text(tostring(current))
 
@@ -274,9 +286,6 @@ windower.register_event('prerender', function()
 		update_bar(ui.tp_bar1, ui.tp_text, xivbar.tp_bar1_width, player.current_tp, player.tpp1, 3)
 		update_bar(ui.tp_bar2, ui.tp_text, xivbar.tp_bar2_width, player.current_tp, player.tpp2, 4)
 		update_bar(ui.tp_bar3, ui.tp_text, xivbar.tp_bar3_width, player.current_tp, player.tpp3, 5)
-		--print(ui.tp_bar1, ui.tp_text, xivbar.tp_bar1_width, player.current_tp, player.tpp1, 3)
-		--print(ui.tp_bar2, ui.tp_text, xivbar.tp_bar2_width, player.current_tp, player.tpp2, 4)
-		--print(ui.tp_bar3, ui.tp_text, xivbar.tp_bar3_width, player.current_tp, player.tpp3, 5)
     end
 
 	if xivbar.update_job then
@@ -297,13 +306,7 @@ end)
 
 
 
---[[ weapon check
-Code is taken from :
-_addon.author = 'Ivaar'
-_addon.command = 'sc'
-_addon.name = 'SkillChains'
-_addon.version = '2.20.08.25'
---]]
+-- weapon check
 
 info = {}
 local weapon = 0
