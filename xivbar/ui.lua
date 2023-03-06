@@ -109,7 +109,7 @@ function ui:position(theme_options)
     self.background:pos(x, y)
 	self.foreground:pos(x, y)
 
-	self.jobicon:pos(x, y)
+	self.jobicon:pos(x + 5 , y + 15)
 	self.weaponicon:pos(x - 60, y + 15)
 
     self.hp_bar:pos(x + 150 + theme_options.bar_offset, y +29)

@@ -52,6 +52,8 @@ local ui = require('ui')
 local player = require('player')
 local xivbar = require('variables')
 
+local skill = 0
+
 -- initialize addon
 function initialize()
     ui:load(theme_options)
@@ -110,21 +112,21 @@ function update_bar(bar, text, width, current, pp, flag)
             if flag == 1 then
 				--xivbar.update_hp = false
                 xivbar.hp_bar_width = x
-				bar:size(x, 12)
+				bar:size(x, 13)
 				if x == theme_options.hp_bar_width then
 					bar:alpha(255)
 				else
-					bar:alpha(100)
+					bar:alpha(170)
 				end
 				bar:show()
             elseif flag == 2 then
 				--xivbar.update_mp = false
                 xivbar.mp_bar_width = x
-				bar:size(x, 12)
+				bar:size(x, 13)
 				if x == theme_options.mp_bar_width then
 					bar:alpha(255)
 				else
-					bar:alpha(100)
+					bar:alpha(170)
 				end
 				bar:show()
             elseif flag == 5 then
