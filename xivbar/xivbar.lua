@@ -52,8 +52,6 @@ local ui = require('ui')
 local player = require('player')
 local xivbar = require('variables')
 
-local skill = 0
-
 -- initialize addon
 function initialize()
     ui:load(theme_options)
@@ -114,9 +112,9 @@ function update_bar(bar, text, width, current, pp, flag)
                 xivbar.hp_bar_width = x
 				bar:size(x, 13)
 				if x == theme_options.hp_bar_width then
-					bar:alpha(255)
+					bar:alpha(200)
 				else
-					bar:alpha(170)
+					bar:alpha(100)
 				end
 				bar:show()
             elseif flag == 2 then
@@ -124,9 +122,9 @@ function update_bar(bar, text, width, current, pp, flag)
                 xivbar.mp_bar_width = x
 				bar:size(x, 13)
 				if x == theme_options.mp_bar_width then
-					bar:alpha(255)
+					bar:alpha(200)
 				else
-					bar:alpha(170)
+					bar:alpha(150)
 				end
 				bar:show()
             elseif flag == 5 then
@@ -178,19 +176,19 @@ function update_bar(bar, text, width, current, pp, flag)
         if theme_options.dim_tp_bar then ui.tp_bar1:alpha(255) end
     else
         text:color(theme_options.font_color_red, theme_options.font_color_green, theme_options.font_color_blue)
-        if theme_options.dim_tp_bar then ui.tp_bar1:alpha(128) end
+        if theme_options.dim_tp_bar then ui.tp_bar1:alpha(150) end
     end
 	
 	if flag >= 3 and current >= 2000 then
 		if theme_options.dim_tp_bar then ui.tp_bar2:alpha(255) end
 	else
-		if theme_options.dim_tp_bar then ui.tp_bar2:alpha(128) end
+		if theme_options.dim_tp_bar then ui.tp_bar2:alpha(150) end
 	end
 	
 	if flag >= 3 and current >= 3000 then
 		if theme_options.dim_tp_bar then ui.tp_bar3:alpha(255) end
 	else
-		if theme_options.dim_tp_bar then ui.tp_bar3:alpha(128) end
+		if theme_options.dim_tp_bar then ui.tp_bar3:alpha(150) end
 	end
 
     text:text(tostring(current))
@@ -246,6 +244,13 @@ end)
 
 -- ON LOGOUT
 windower.register_event('logout', function()
+	coroutine.close(check_weapon)
+    hide()
+end)
+
+-- ON UNLOAD
+windower.register_event('unload', function()
+	coroutine.close(check_weapon)
     hide()
 end)
 
@@ -336,16 +341,18 @@ end)
 
 function update_weapon()
     local main_weapon = windower.ffxi.get_items(info.main_bag, info.main_weapon).id
---    if not check_weapon or coroutine.status(check_weapon) ~= 'suspended' then
---        check_weapon = coroutine.schedule(update_weapon, 10)
---    end
-	skill = res.items[main_weapon].skill
-	theme_options.bar_weaponicon = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/' .. skill .. 'w.png'
-	initialize()
-	ui:show()
-	ui.tp_bar1:hide()
-	ui.tp_bar2:hide()
-	ui.tp_bar3:hide()
+
+	if main_weapon ~= 0 then
+		skill = res.items[main_weapon].skill
+		theme_options.bar_weaponicon = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/' .. skill .. 'w.png'
+		initialize()
+		ui:show()
+		ui.tp_bar1:hide()
+		ui.tp_bar2:hide()
+		ui.tp_bar3:hide()
+	elseif not check_weapon or coroutine.status(check_weapon) ~= 'suspended' then
+        check_weapon = coroutine.schedule(update_weapon, 10)
+    end
 end
 
 windower.register_event('load', function()
@@ -358,18 +365,3 @@ windower.register_event('load', function()
         update_weapon()
     end
 end)
---[[
-windower.register_event('unload', function()
-    coroutine.close(check_weapon)
-end)
-
-windower.register_event('logout', function()
-    coroutine.close(check_weapon)
-    check_weapon = nil
-    info = {}
-end)
-
-
-
-
---]]
