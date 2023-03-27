@@ -42,14 +42,3 @@ and you can use a compact version for a smaller resolution:
 2. Create the necessary images. A theme is composed of 5 images: a background for the bars (*bar_bg.png*), a background for the compact mode (*bar_compact.png*), and one image for each bar (*hp_fg.png, mp_fg.png and tp_fg.png*). You can take a look at the default themes.
 3. Edit the name of the theme in the settings to yours. This setting must match the name of the folder you just created.
 4. Adjust the bar width, spacing and offset for your custom theme in the settings.
-
-
-## MrMaelu edit:
-Added a FFXVI inspired skin.
-New functions:
-1. Displays weapon type icon (default uses Empyrean Weapon icons)
-2. Displays current job icon (default uses AF headgear)
-3. The TP bar is split in 3.
-4. All the bars are separate and are handled independently to allow more placement options.
-
-![xvibar XVI](https://i.ibb.co/zSdcwr6/image-2023-03-05-033756309.png)

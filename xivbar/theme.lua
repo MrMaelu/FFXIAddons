@@ -31,21 +31,18 @@ local theme = {}
 theme.apply = function (settings)
     local options = {}
 
-    options.total_height = 92
-    options.total_width = 812
+    options.total_height = settings.Theme.height
+    options.total_width = settings.Theme.width
     options.offset_x = settings.Bars.OffsetX
     options.offset_y = settings.Bars.OffsetY
 
-    options.bar_background = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/bar_bg.png'
+	options.bar_background = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/bar_bg.png'
     options.bar_foreground = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/bar_fg.png'
     options.bar_hp = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/hp_fg.png'
     options.bar_mp = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/mp_fg.png'
     options.bar_tp1 = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/tp1_fg.png'
 	options.bar_tp2 = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/tp2_fg.png'
 	options.bar_tp3 = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/tp3_fg.png'
-	
-	options.bar_jobicon = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/0.png'
-	options.bar_weaponicon = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/w0.png'
 
     options.font = settings.Texts.Font
     options.font_size = settings.Texts.Size
@@ -62,19 +59,60 @@ theme.apply = function (settings)
     options.full_tp_color_green = settings.Texts.FullTpColor.Green
     options.full_tp_color_blue = settings.Texts.FullTpColor.Blue
     options.text_offset = settings.Texts.Offset
+	options.numberprefix = settings.Texts.prefix
+	
+	options.bar_alphaMax = settings.Theme.Bar.alphamax
+	options.bar_alphaMin = settings.Theme.Bar.alphamin
 
--- With is hard coded since I could not make it work from the settings file.
-    options.hp_bar_width = 656
-	options.mp_bar_width = 656
-	options.tp_bar1_width = 185
-	options.tp_bar2_width = 185
-	options.tp_bar3_width = 185
+	options.hp_bar_width = settings.Theme.Bar.hp.width
+	options.hp_bar_height = settings.Theme.Bar.hp.height
+	
+	options.mp_bar_width = settings.Theme.Bar.mp.width
+	options.mp_bar_height = settings.Theme.Bar.mp.height
+	
+	options.tp_bar1_width = settings.Theme.Bar.tp.a.width
+	options.tp_bar2_width = settings.Theme.Bar.tp.b.width
+	options.tp_bar3_width = settings.Theme.Bar.tp.c.width
+	options.tp_bar_height = settings.Theme.Bar.tp.height
 
     options.bar_spacing = settings.Theme.Bar.Spacing
     options.bar_offset = settings.Theme.Bar.Offset
 
     options.dim_tp_bar = settings.Theme.DimTpBar
 
+	options.bgalpha = settings.Theme.bgalpha
+	options.fgalpha = settings.Theme.fgalpha
+
+	options.jobicon_posx = settings.Theme.jobiconposx
+	options.jobicon_posy = settings.Theme.jobiconposy
+	options.jobicon_alpha = settings.Theme.jobiconalpha
+
+	options.weaponicon_posx = settings.Theme.weaponiconposx
+	options.weaponicon_posy = settings.Theme.weaponiconposy
+	options.weaponicon_alpha = settings.Theme.weaponiconalpha
+
+    options.hp_bar_posx = settings.Theme.Bar.hp.posx
+	options.hp_bar_posy = settings.Theme.Bar.hp.posy
+    
+	options.mp_bar_posx = settings.Theme.Bar.mp.posx
+	options.mp_bar_posy = settings.Theme.Bar.mp.posy
+	
+	options.tp_bar1_posx = settings.Theme.Bar.tp.a.posx
+	options.tp_bar1_posy = settings.Theme.Bar.tp.a.posy
+
+	options.tp_bar2_posx = settings.Theme.Bar.tp.b.posx
+	options.tp_bar2_posy = settings.Theme.Bar.tp.b.posy
+
+	options.tp_bar3_posx = settings.Theme.Bar.tp.c.posx
+	options.tp_bar3_posy = settings.Theme.Bar.tp.c.posy
+
+    options.hp_text_posx = settings.Theme.Bar.hp.textx
+	options.hp_text_posy = settings.Theme.Bar.hp.texty
+	options.mp_text_posx = settings.Theme.Bar.mp.textx
+	options.mp_text_posy = settings.Theme.Bar.mp.texty
+	options.tp_text_posx = settings.Theme.Bar.tp.textx
+	options.tp_text_posy = settings.Theme.Bar.tp.texty
+	
     return options
 end
 

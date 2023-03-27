@@ -104,31 +104,34 @@ end
 -- position the images and text
 function ui:position(theme_options)
     local x = windower.get_windower_settings().x_res / 2 - (theme_options.total_width / 2) + theme_options.offset_x
-    local y = windower.get_windower_settings().y_res - 60 + theme_options.offset_y
+    local y = windower.get_windower_settings().y_res + theme_options.offset_y
 
     self.background:pos(x, y)
+	self.background:alpha(theme_options.bgalpha)
 	self.foreground:pos(x, y)
+	self.foreground:alpha(theme_options.fgalpha)
 
-	self.jobicon:pos(x + 5 , y + 15)
-	self.weaponicon:pos(x - 60, y + 15)
+	self.jobicon:pos(x + theme_options.jobicon_posx , y + theme_options.jobicon_posy)
+	self.jobicon:alpha(theme_options.jobicon_alpha)
+	self.weaponicon:pos(x + theme_options.weaponicon_posx, y + theme_options.weaponicon_posy)
+	self.weaponicon:alpha(theme_options.weaponicon_alpha)
 
-    self.hp_bar:pos(x + 150 + theme_options.bar_offset, y +29)
-    self.mp_bar:pos(x + 150 + theme_options.bar_offset, y + 51)
-    
-	self.tp_bar1:pos(x + 163 + theme_options.bar_offset, y + 72)
-	self.tp_bar2:pos(x + 384 + theme_options.bar_offset, y + 72)
-	self.tp_bar3:pos(x + 605 + theme_options.bar_offset, y + 72)
-    
-	self.hp_bar:width(0)
+    self.hp_bar:pos(x + theme_options.hp_bar_posx, y + theme_options.hp_bar_posy)
+    self.mp_bar:pos(x + theme_options.mp_bar_posx, y + theme_options.mp_bar_posy)
+	self.tp_bar1:pos(x + theme_options.tp_bar1_posx, y + theme_options.tp_bar1_posy)
+	self.tp_bar2:pos(x + theme_options.tp_bar2_posx, y + theme_options.tp_bar2_posy)
+	self.tp_bar3:pos(x + theme_options.tp_bar3_posx, y + theme_options.tp_bar3_posy)
+
     self.mp_bar:width(0)
     
 	self.tp_bar1:width(0)
 	self.tp_bar2:width(0)
 	self.tp_bar3:width(0)
 
-    self.hp_text:pos(x + 100 + theme_options.text_offset, self.background:pos_y() - 51)
-    self.mp_text:pos(x + 100 + theme_options.text_offset, self.background:pos_y() - 29)
-    self.tp_text:pos(x + 100 + theme_options.text_offset, self.background:pos_y() - 8)
+    self.hp_text:pos(x + theme_options.hp_text_posx, self.background:pos_y() + theme_options.hp_text_posy)
+	self.mp_text:pos(x + theme_options.mp_text_posx, self.background:pos_y() + theme_options.mp_text_posy)
+	self.tp_text:pos(x + theme_options.tp_text_posx, self.background:pos_y() + theme_options.tp_text_posy)
+
 end
 
 -- hide ui

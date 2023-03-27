@@ -110,21 +110,21 @@ function update_bar(bar, text, width, current, pp, flag)
             if flag == 1 then
 				--xivbar.update_hp = false
                 xivbar.hp_bar_width = x
-				bar:size(x, 13)
+				bar:size(x, theme_options.hp_bar_height)
 				if x == theme_options.hp_bar_width then
-					bar:alpha(200)
+					bar:alpha(theme_options.bar_alphaMax)
 				else
-					bar:alpha(100)
+					bar:alpha(theme_options.bar_alphaMin)
 				end
 				bar:show()
             elseif flag == 2 then
 				--xivbar.update_mp = false
                 xivbar.mp_bar_width = x
-				bar:size(x, 13)
+				bar:size(x, theme_options.mp_bar_height)
 				if x == theme_options.mp_bar_width then
-					bar:alpha(200)
+					bar:alpha(theme_options.bar_alphaMax)
 				else
-					bar:alpha(150)
+					bar:alpha(theme_options.bar_alphaMin)
 				end
 				bar:show()
             elseif flag == 5 then
@@ -133,9 +133,9 @@ function update_bar(bar, text, width, current, pp, flag)
 				xivbar.tp_bar2_width = theme_options.tp_bar2_width
 				xivbar.tp_bar3_width = x
 
-				ui.tp_bar1:size(theme_options.tp_bar1_width,13)
-				ui.tp_bar2:size(theme_options.tp_bar2_width,13)
-				ui.tp_bar3:size(x, 13)
+				ui.tp_bar1:size(theme_options.tp_bar1_width, theme_options.tp_bar_height)
+				ui.tp_bar2:size(theme_options.tp_bar2_width, theme_options.tp_bar_height)
+				ui.tp_bar3:size(x, theme_options.tp_bar_height)
 				
 				ui.tp_bar1:show()
 				ui.tp_bar2:show()
@@ -146,9 +146,9 @@ function update_bar(bar, text, width, current, pp, flag)
 				xivbar.tp_bar2_width = x
 				xivbar.tp_bar3_width = 0
 				
-				ui.tp_bar1:size(theme_options.tp_bar1_width,13)
-				ui.tp_bar2:size(x,13)
-				ui.tp_bar3:size(0,13)
+				ui.tp_bar1:size(theme_options.tp_bar1_width, theme_options.tp_bar_height)
+				ui.tp_bar2:size(x, theme_options.tp_bar_height)
+				ui.tp_bar3:size(0, theme_options.tp_bar_height)
 				
 				ui.tp_bar1:show()
 				ui.tp_bar2:show()
@@ -159,9 +159,9 @@ function update_bar(bar, text, width, current, pp, flag)
 				xivbar.tp_bar2_width = 0
 				xivbar.tp_bar3_width = 0
 				
-				ui.tp_bar1:size(x,13)
-				ui.tp_bar2:size(0,13)
-				ui.tp_bar3:size(0,13)
+				ui.tp_bar1:size(x, theme_options.tp_bar_height)
+				ui.tp_bar2:size(0, theme_options.tp_bar_height)
+				ui.tp_bar3:size(0, theme_options.tp_bar_height)
 				
 				ui.tp_bar1:show()
 				ui.tp_bar2:hide()
@@ -173,25 +173,38 @@ function update_bar(bar, text, width, current, pp, flag)
 
     if flag >= 3 and current >= 1000 then
         text:color(theme_options.full_tp_color_red, theme_options.full_tp_color_green, theme_options.full_tp_color_blue)
-        if theme_options.dim_tp_bar then ui.tp_bar1:alpha(255) end
+        if theme_options.dim_tp_bar then ui.tp_bar1:alpha(theme_options.bar_alphaMax) end
     else
         text:color(theme_options.font_color_red, theme_options.font_color_green, theme_options.font_color_blue)
-        if theme_options.dim_tp_bar then ui.tp_bar1:alpha(150) end
+        if theme_options.dim_tp_bar then ui.tp_bar1:alpha(theme_options.bar_alphaMin) end
     end
 	
 	if flag >= 3 and current >= 2000 then
-		if theme_options.dim_tp_bar then ui.tp_bar2:alpha(255) end
+		if theme_options.dim_tp_bar then ui.tp_bar2:alpha(theme_options.bar_alphaMax) end
 	else
-		if theme_options.dim_tp_bar then ui.tp_bar2:alpha(150) end
+		if theme_options.dim_tp_bar then ui.tp_bar2:alpha(theme_options.bar_alphaMin) end
 	end
 	
 	if flag >= 3 and current >= 3000 then
-		if theme_options.dim_tp_bar then ui.tp_bar3:alpha(255) end
+		if theme_options.dim_tp_bar then ui.tp_bar3:alpha(theme_options.bar_alphaMax) end
 	else
-		if theme_options.dim_tp_bar then ui.tp_bar3:alpha(150) end
+		if theme_options.dim_tp_bar then ui.tp_bar3:alpha(theme_options.bar_alphaMin) end
 	end
 
-    text:text(tostring(current))
+if theme_options.numberprefix == true then
+	if flag >= 3 then
+		prefix = 'TP '
+	elseif flag == 2 then
+		prefix = 'MP '
+	elseif flag == 1 then
+		prefix = 'MP '
+	end
+else
+	prefix = ''
+end
+
+text:text(prefix .. tostring(current))
+text:alpha(theme_options.font_alpha)
 
 end
 
@@ -206,7 +219,6 @@ function update_job(job)
 	ui.tp_bar2:hide()
 	ui.tp_bar3:hide()
 end
-
 
 -- hide the addon
 function hide()
@@ -320,8 +332,6 @@ windower.register_event('status change', function(new_status_id)
         show()
     end
 end)
-
-
 
 -- weapon check
 
