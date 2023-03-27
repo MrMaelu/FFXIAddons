@@ -3,7 +3,7 @@
     <global>
         <Bars>
             <OffsetX>0</OffsetX>
-            <OffsetY>-330</OffsetY>
+            <OffsetY>-300</OffsetY>
         </Bars>
         <Texts>
             <Color>
@@ -19,7 +19,7 @@
                 <Red>80</Red>
             </FullTpColor>
             <Offset>0</Offset>
-            <Size>12</Size>
+            <Size>18</Size>
             <Stroke>
                 <Alpha>100</Alpha>
                 <Blue>0</Blue>
@@ -42,26 +42,26 @@
                 <alphamax>150</alphamax>
                 <alphamin>100</alphamin>
                 <hp>
-                    <height>16</height>
-                    <posx>43</posx>
-                    <posy>76</posy>
-                    <textx>4</textx>
-                    <texty>63</texty>
-                    <width>234</width>
+                    <height>11</height>
+                    <posx>6</posx>
+                    <posy>5</posy>
+                    <textx>46</textx>
+                    <texty>7</texty>
+                    <width>244</width>
                 </hp>
                 <mp>
-                    <height>8</height>
-                    <posx>104</posx>
-                    <posy>101</posy>
-                    <textx>58</textx>
-                    <texty>92</texty>
-                    <width>104</width>
+                    <height>11</height>
+                    <posx>268</posx>
+                    <posy>5</posy>
+                    <textx>311</textx>
+                    <texty>7</texty>
+                    <width>244</width>
                 </mp>
                 <tp>
                     <a>
-                        <posx>87</posx>
-                        <posy>50</posy>
-                        <width>172</width>
+                        <posx>530</posx>
+                        <posy>5</posy>
+                        <width>244</width>
                     </a>
                     <b>
                         <posx>0</posx>
@@ -73,24 +73,24 @@
                         <posy>0</posy>
                         <width>0</width>
                     </c>
-                    <height>19</height>
-                    <textx>120</textx>
-                    <texty>27</texty>
+                    <height>11</height>
+                    <textx>567</textx>
+                    <texty>7</texty>
                 </tp>
             </Bar>
             <Compact>false</Compact>
             <DimTpBar>true</DimTpBar>
-            <Name>theatrhythm</Name>
+            <Name>FF3</Name>
             <bgalpha>180</bgalpha>
             <fgalpha>180</fgalpha>
             <height>92</height>
-            <jobiconalpha>200</jobiconalpha>
-            <jobiconposx>272</jobiconposx>
-            <jobiconposy>13</jobiconposy>
-            <weaponiconalpha>200</weaponiconalpha>
-            <weaponiconposx>29</weaponiconposx>
+            <jobiconalpha>150</jobiconalpha>
+            <jobiconposx>-50</jobiconposx>
+            <jobiconposy>-60</jobiconposy>
+            <weaponiconalpha>0</weaponiconalpha>
+            <weaponiconposx>0</weaponiconposx>
             <weaponiconposy>0</weaponiconposy>
-            <width>362</width>
+            <width>780</width>
         </Theme>
     </global>
 </settings>
