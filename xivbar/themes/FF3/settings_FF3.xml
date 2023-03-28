@@ -46,7 +46,7 @@
                     <posx>6</posx>
                     <posy>5</posy>
                     <textx>46</textx>
-                    <texty>7</texty>
+                    <texty>2</texty>
                     <width>244</width>
                 </hp>
                 <mp>
@@ -54,7 +54,7 @@
                     <posx>268</posx>
                     <posy>5</posy>
                     <textx>311</textx>
-                    <texty>7</texty>
+                    <texty>2</texty>
                     <width>244</width>
                 </mp>
                 <tp>
@@ -64,18 +64,18 @@
                         <width>244</width>
                     </a>
                     <b>
-                        <posx>0</posx>
-                        <posy>0</posy>
-                        <width>0</width>
+                        <posx>530</posx>
+                        <posy>5</posy>
+                        <width>244</width>
                     </b>
                     <c>
-                        <posx>0</posx>
-                        <posy>0</posy>
-                        <width>0</width>
+                        <posx>530</posx>
+                        <posy>5</posy>
+                        <width>244</width>
                     </c>
                     <height>11</height>
                     <textx>567</textx>
-                    <texty>7</texty>
+                    <texty>2</texty>
                 </tp>
             </Bar>
             <Compact>false</Compact>
