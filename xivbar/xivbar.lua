@@ -52,6 +52,18 @@ local ui = require('ui')
 local player = require('player')
 local xivbar = require('variables')
 
+-- Import variables
+local hp_bar_width = theme_options.hp_bar_width
+local hp_bar_height = theme_options.hp_bar_height
+
+local mp_bar_width = theme_options.mp_bar_width
+local mp_bar_height = theme_options.mp_bar_height
+
+local tp_bar1_width = theme_options.tp_bar1_width
+local tp_bar2_width = theme_options.tp_bar2_width
+local tp_bar3_width = theme_options.tp_bar3_width
+local tp_bar_height = theme_options.tp_bar_height
+
 -- initialize addon
 function initialize()
     ui:load(theme_options)
@@ -76,11 +88,11 @@ function update_bar(bar, text, width, current, pp, flag)
     local old_width = width
 
 	if flag == 1 then
-		new_width = math.floor((pp / 100) * theme_options.hp_bar_width)
+		new_width = math.floor((pp / 100) * hp_bar_width)
 	elseif flag == 2 then
-		new_width = math.floor((pp / 100) * theme_options.mp_bar_width)
+		new_width = math.floor((pp / 100) * mp_bar_width)
 	elseif flag >= 3 then
-		new_width = math.floor((pp / 100) * theme_options.tp_bar1_width)
+		new_width = math.floor((pp / 100) * tp_bar1_width)
 	end
 
     if new_width ~= nil and new_width >= 0 then
@@ -95,11 +107,11 @@ function update_bar(bar, text, width, current, pp, flag)
             if old_width < new_width then
                 x = old_width + math.ceil((new_width - old_width) * 0.1)
 				if flag == 1 then
-                x = math.min(x, theme_options.hp_bar_width)
+                x = math.min(x, hp_bar_width)
 				elseif flag == 2 then
-				x = math.min(x, theme_options.mp_bar_width)
+				x = math.min(x, mp_bar_width)
 				elseif flag >= 3 then
-				x = math.min(x, theme_options.tp_bar1_width)
+				x = math.min(x, tp_bar1_width)
 				end
             elseif old_width > new_width then
                 x = old_width - math.ceil((old_width - new_width) * 0.1)
@@ -110,8 +122,8 @@ function update_bar(bar, text, width, current, pp, flag)
             if flag == 1 then
 				--xivbar.update_hp = false
                 xivbar.hp_bar_width = x
-				bar:size(x, theme_options.hp_bar_height)
-				if x == theme_options.hp_bar_width then
+				bar:size(x, hp_bar_height)
+				if x == hp_bar_width then
 					bar:alpha(theme_options.bar_alphaMax)
 				else
 					bar:alpha(theme_options.bar_alphaMin)
@@ -120,8 +132,8 @@ function update_bar(bar, text, width, current, pp, flag)
             elseif flag == 2 then
 				--xivbar.update_mp = false
                 xivbar.mp_bar_width = x
-				bar:size(x, theme_options.mp_bar_height)
-				if x == theme_options.mp_bar_width then
+				bar:size(x, mp_bar_height)
+				if x == mp_bar_width then
 					bar:alpha(theme_options.bar_alphaMax)
 				else
 					bar:alpha(theme_options.bar_alphaMin)
@@ -129,26 +141,26 @@ function update_bar(bar, text, width, current, pp, flag)
 				bar:show()
             elseif flag == 5 then
 				--xivbar.update_tp = false
-				xivbar.tp_bar1_width = theme_options.tp_bar1_width
-				xivbar.tp_bar2_width = theme_options.tp_bar2_width
+				xivbar.tp_bar1_width = tp_bar1_width
+				xivbar.tp_bar2_width = tp_bar2_width
 				xivbar.tp_bar3_width = x
 
-				ui.tp_bar1:size(theme_options.tp_bar1_width, theme_options.tp_bar_height)
-				ui.tp_bar2:size(theme_options.tp_bar2_width, theme_options.tp_bar_height)
-				ui.tp_bar3:size(x, theme_options.tp_bar_height)
+				ui.tp_bar1:size(tp_bar1_width, tp_bar_height)
+				ui.tp_bar2:size(tp_bar2_width, tp_bar_height)
+				ui.tp_bar3:size(x, tp_bar_height)
 				
 				ui.tp_bar1:show()
 				ui.tp_bar2:show()
 				ui.tp_bar3:show()				
 			elseif flag == 4 then
 				--xivbar.update_tp = false
-				xivbar.tp_bar1_width = theme_options.tp_bar1_width
+				xivbar.tp_bar1_width = tp_bar1_width
 				xivbar.tp_bar2_width = x
 				xivbar.tp_bar3_width = 0
 				
-				ui.tp_bar1:size(theme_options.tp_bar1_width, theme_options.tp_bar_height)
-				ui.tp_bar2:size(x, theme_options.tp_bar_height)
-				ui.tp_bar3:size(0, theme_options.tp_bar_height)
+				ui.tp_bar1:size(tp_bar1_width, tp_bar_height)
+				ui.tp_bar2:size(x, tp_bar_height)
+				ui.tp_bar3:size(0, tp_bar_height)
 				
 				ui.tp_bar1:show()
 				ui.tp_bar2:show()
@@ -159,9 +171,9 @@ function update_bar(bar, text, width, current, pp, flag)
 				xivbar.tp_bar2_width = 0
 				xivbar.tp_bar3_width = 0
 				
-				ui.tp_bar1:size(x, theme_options.tp_bar_height)
-				ui.tp_bar2:size(0, theme_options.tp_bar_height)
-				ui.tp_bar3:size(0, theme_options.tp_bar_height)
+				ui.tp_bar1:size(x, tp_bar_height)
+				ui.tp_bar2:size(0, tp_bar_height)
+				ui.tp_bar3:size(0, tp_bar_height)
 				
 				ui.tp_bar1:show()
 				ui.tp_bar2:hide()
