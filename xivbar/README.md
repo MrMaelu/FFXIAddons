@@ -1,5 +1,7 @@
-NOTE: This version is heavily modified compared to the original.
-New features:
+# Modded XIVBAR by MrMaelu
+###NOTE: This version is heavily modified compared to the original.
+
+##New features:
 1. Dynamic job and weapon icons.
 2. More flexible settings available to make theme creation easier.
 3. Possibility for 3 TP bars.
@@ -10,7 +12,7 @@ New features:
 https://user-images.githubusercontent.com/12958339/228362448-fb425ea1-454e-4166-8791-8af562b76d13.mp4
 
 
-Removed features:
+##Removed features:
 1. Compact mode
 2. SirEdeonX themes
 
