@@ -6,6 +6,7 @@ New features:
 4. Bars can be placed anywhere.
 5. Includes other themes than the original from SirEdeonX. I have not ported the existing themes to the new layout, so I removed them from this release.
 6. Includes a theme selector application to allow for easier swapping between themes.
+
 https://user-images.githubusercontent.com/12958339/228362448-fb425ea1-454e-4166-8791-8af562b76d13.mp4
 
 
