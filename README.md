@@ -8,8 +8,14 @@
 4. Bars can be placed anywhere.
 5. Includes other themes than the original from SirEdeonX. I have not ported the existing themes to the new layout, so I removed them from this release.
 6. Includes a theme selector application to allow for easier swapping between themes.
+7. Supports an Elden Ring like death message.
 
+## Theme selector
 https://user-images.githubusercontent.com/12958339/228619252-bd97cb6a-1218-4866-974a-855fbeb141fd.mp4
+
+## Elden Ring death message
+![dead](https://user-images.githubusercontent.com/12958339/228691947-9935ef19-462a-4abd-807b-77e30d64d7a2.png)
+
 
 ## Removed features:
 1. Compact mode
