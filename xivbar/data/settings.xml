@@ -2,30 +2,30 @@
 <settings>
     <global>
         <Bars>
-            <OffsetX>-50</OffsetX>
-            <OffsetY>-330</OffsetY>
+            <OffsetX>-950</OffsetX>
+            <OffsetY>-1330</OffsetY>
         </Bars>
         <Texts>
             <Color>
-                <Alpha>255</Alpha>
+                <Alpha>200</Alpha>
                 <Blue>250</Blue>
                 <Green>252</Green>
                 <Red>253</Red>
             </Color>
-            <Font>Dubai Medium</Font>
+            <Font>Nirmala UI</Font>
             <FullTpColor>
                 <Blue>250</Blue>
                 <Green>180</Green>
                 <Red>80</Red>
             </FullTpColor>
             <Offset>0</Offset>
-            <Size>14</Size>
+            <Size>10</Size>
             <Stroke>
-                <Alpha>0</Alpha>
+                <Alpha>100</Alpha>
                 <Blue>0</Blue>
                 <Green>0</Green>
                 <Red>0</Red>
-                <Width>2</Width>
+                <Width>1</Width>
             </Stroke>
             <prefix>true</prefix>
         </Texts>
@@ -38,59 +38,59 @@
                 </Compact>
                 <Offset>0</Offset>
                 <Spacing>0</Spacing>
-                <Width>657</Width>
-                <alphamax>180</alphamax>
-                <alphamin>120</alphamin>
+                <Width>0</Width>
+                <alphamax>200</alphamax>
+                <alphamin>150</alphamin>
                 <hp>
-                    <height>13</height>
-                    <posx>151</posx>
-                    <posy>30</posy>
-                    <textx>66</textx>
-                    <texty>-52</texty>
-                    <width>655</width>
+                    <height>11</height>
+                    <posx>106</posx>
+                    <posy>20</posy>
+                    <textx>111</textx>
+                    <texty>-40</texty>
+                    <width>289</width>
                 </hp>
                 <mp>
-                    <height>13</height>
-                    <posx>152</posx>
-                    <posy>51</posy>
-                    <textx>66</textx>
-                    <texty>-30</texty>
-                    <width>654</width>
+                    <height>11</height>
+                    <posx>106</posx>
+                    <posy>38</posy>
+                    <textx>111</textx>
+                    <texty>-22</texty>
+                    <width>289</width>
                 </mp>
                 <tp>
                     <a>
-                        <posx>154</posx>
-                        <posy>72</posy>
-                        <width>193</width>
+                        <posx>106</posx>
+                        <posy>56</posy>
+                        <width>81</width>
                     </a>
                     <b>
-                        <posx>382</posx>
-                        <posy>72</posy>
-                        <width>193</width>
+                        <posx>210</posx>
+                        <posy>56</posy>
+                        <width>81</width>
                     </b>
                     <c>
-                        <posx>610</posx>
-                        <posy>72</posy>
-                        <width>193</width>
+                        <posx>314</posx>
+                        <posy>56</posy>
+                        <width>81</width>
                     </c>
-                    <height>13</height>
-                    <textx>66</textx>
-                    <texty>-10</texty>
+                    <height>11</height>
+                    <textx>111</textx>
+                    <texty>-5</texty>
                 </tp>
             </Bar>
             <Compact>false</Compact>
             <DimTpBar>true</DimTpBar>
-            <Name>XVI</Name>
+            <Name>EldenRing</Name>
             <bgalpha>180</bgalpha>
             <fgalpha>180</fgalpha>
-            <height>92</height>
-            <jobiconalpha>180</jobiconalpha>
-            <jobiconposx>5</jobiconposx>
-            <jobiconposy>25</jobiconposy>
-            <weaponiconalpha>180</weaponiconalpha>
-            <weaponiconposx>830</weaponiconposx>
-            <weaponiconposy>30</weaponiconposy>
-            <width>822</width>
+            <height>86</height>
+            <jobiconalpha>0</jobiconalpha>
+            <jobiconposx>-5</jobiconposx>
+            <jobiconposy>-5</jobiconposy>
+            <weaponiconalpha>0</weaponiconalpha>
+            <weaponiconposx>-90</weaponiconposx>
+            <weaponiconposy>-33</weaponiconposy>
+            <width>398</width>
         </Theme>
     </global>
 </settings>

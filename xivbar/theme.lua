@@ -43,6 +43,7 @@ theme.apply = function (settings)
     options.bar_tp1 = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/tp1_fg.png'
 	options.bar_tp2 = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/tp2_fg.png'
 	options.bar_tp3 = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/tp3_fg.png'
+	options.deathmessage = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/dead.png'
 
     options.font = settings.Texts.Font
     options.font_size = settings.Texts.Size

@@ -58,6 +58,8 @@ ui.tp_text = texts.new(text_setup)
 ui.jobicon = images.new(images_setup)
 ui.weaponicon = images.new(images_setup)
 
+ui.dead = images.new(images_setup)
+
 -- setup images
 function setup_image(image, path)
     image:path(path)
@@ -98,6 +100,8 @@ function ui:load(theme_options)
     setup_text(self.mp_text, theme_options)
     setup_text(self.tp_text, theme_options)
 
+	setup_image(self.dead, theme_options.deathmessage)
+
     self:position(theme_options)
 end
 
@@ -132,6 +136,8 @@ function ui:position(theme_options)
 	self.mp_text:pos(x + theme_options.mp_text_posx, self.background:pos_y() + theme_options.mp_text_posy)
 	self.tp_text:pos(x + theme_options.tp_text_posx, self.background:pos_y() + theme_options.tp_text_posy)
 
+	self.dead:pos(-2500 + (windower.get_windower_settings().x_res/2), windower.get_windower_settings().y_res /2 -300)
+	self.dead:hide()
 end
 
 -- hide ui

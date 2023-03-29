@@ -64,6 +64,8 @@ local tp_bar2_width = theme_options.tp_bar2_width
 local tp_bar3_width = theme_options.tp_bar3_width
 local tp_bar_height = theme_options.tp_bar_height
 
+local deathmessage = theme_options.deathmessage
+
 -- initialize addon
 function initialize()
     ui:load(theme_options)
@@ -336,12 +338,16 @@ windower.register_event('prerender', function()
 end)
 
 windower.register_event('status change', function(new_status_id)
+print(new_status_id)
     if xivbar.hide_bars == false and (new_status_id == 4) then
         xivbar.hide_bars = true
         hide()
     elseif xivbar.hide_bars and new_status_id ~= 4 then
         xivbar.hide_bars = false
         show()
+	end
+	if new_status_id == 2 then
+		ui.dead:show()
     end
 end)
 
