@@ -9,7 +9,7 @@
 5. Includes other themes than the original from SirEdeonX. I have not ported the existing themes to the new layout, so I removed them from this release.
 6. Includes a theme selector application to allow for easier swapping between themes.
 
-https://user-images.githubusercontent.com/12958339/228612691-35dcf139-33f8-45ec-b871-c53451552dd3.mp4
+https://user-images.githubusercontent.com/12958339/228619252-bd97cb6a-1218-4866-974a-855fbeb141fd.mp4
 
 ## Removed features:
 1. Compact mode
