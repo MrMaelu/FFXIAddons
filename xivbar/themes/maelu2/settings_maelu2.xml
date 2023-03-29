@@ -83,10 +83,10 @@
             <bgalpha>180</bgalpha>
             <fgalpha>180</fgalpha>
             <height>81</height>
-            <jobiconalpha>150</jobiconalpha>
+            <jobiconalpha>180</jobiconalpha>
             <jobiconposx>-80</jobiconposx>
             <jobiconposy>0</jobiconposy>
-            <weaponiconalpha>150</weaponiconalpha>
+            <weaponiconalpha>180</weaponiconalpha>
             <weaponiconposx>650</weaponiconposx>
             <weaponiconposy>0</weaponiconposy>
             <width>418</width>

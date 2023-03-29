@@ -27,7 +27,7 @@
                 <Red>0</Red>
                 <Width>2</Width>
             </Stroke>
-			<prefix>true</prefix>
+            <prefix>true</prefix>
         </Texts>
         <Theme>
             <Bar>
@@ -39,8 +39,8 @@
                 <Offset>0</Offset>
                 <Spacing>0</Spacing>
                 <Width>657</Width>
-                <alphamax>150</alphamax>
-                <alphamin>100</alphamin>
+                <alphamax>180</alphamax>
+                <alphamin>120</alphamin>
                 <hp>
                     <height>13</height>
                     <posx>151</posx>
@@ -81,13 +81,13 @@
             <Compact>false</Compact>
             <DimTpBar>true</DimTpBar>
             <Name>XVI</Name>
-            <bgalpha>130</bgalpha>
-            <fgalpha>130</fgalpha>
+            <bgalpha>180</bgalpha>
+            <fgalpha>180</fgalpha>
             <height>92</height>
-            <jobiconalpha>150</jobiconalpha>
+            <jobiconalpha>180</jobiconalpha>
             <jobiconposx>5</jobiconposx>
             <jobiconposy>25</jobiconposy>
-            <weaponiconalpha>150</weaponiconalpha>
+            <weaponiconalpha>180</weaponiconalpha>
             <weaponiconposx>830</weaponiconposx>
             <weaponiconposy>30</weaponiconposy>
             <width>822</width>
