@@ -73,12 +73,12 @@ windower.register_event('status change', function(new_status_id)
 		end
 	else
 		-- hide
-		deads:hide()
 				for i = 255,0,-25
 		do
 			coroutine.sleep(0.1)
 			deadt:alpha(i)
 		end
+		deads:hide()
 		deadt:hide()
 	end
 end)
