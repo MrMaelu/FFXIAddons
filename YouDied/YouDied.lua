@@ -44,6 +44,12 @@ deadtext = windower.addon_path .. 'deadt.png'
 deads = images.new(images_setup)
 deadt = images.new(images_setup)
 
+textwidth = 650
+textheight = 100
+
+shadewidth = windower.get_windower_settings().x_res
+shadeheight = 900
+
 local images_setup = {
     draggable = false
 }
@@ -51,18 +57,21 @@ local images_setup = {
 function setup_image(image, path)
     image:path(path)
     image:draggable(false)
-    image:fit(true)
 end
 
 setup_image(deads, deadshade)
 setup_image(deadt, deadtext)
 
-deads:pos(-2500 + (windower.get_windower_settings().x_res/2), windower.get_windower_settings().y_res /2 -300)
-deadt:pos(-2500 + (windower.get_windower_settings().x_res/2), windower.get_windower_settings().y_res /2 -300)
+deads:pos(0, windower.get_windower_settings().y_res / 2 - (shadeheight / 2))
+deadt:pos((windower.get_windower_settings().x_res / 2) - (textwidth / 2), windower.get_windower_settings().y_res / 2 - (textheight / 2))
 
 windower.register_event('status change', function(new_status_id)
-	if new_status_id == 2 then
+print(new_status_id)
+	--if new_status_id == 2 then
+	if new_status_id == 4 then
 		-- show
+		deads:size(shadewidth, shadeheight)
+		deads:alpha(255)
 		deads:show()
 		deadt:alpha(0)
 		deadt:show()
@@ -77,6 +86,7 @@ windower.register_event('status change', function(new_status_id)
 		do
 			coroutine.sleep(0.1)
 			deadt:alpha(i)
+			deads:alpha(i)
 		end
 		deads:hide()
 		deadt:hide()
