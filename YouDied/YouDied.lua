@@ -66,7 +66,6 @@ deads:pos(0, windower.get_windower_settings().y_res / 2 - (shadeheight / 2))
 deadt:pos((windower.get_windower_settings().x_res / 2) - (textwidth / 2), windower.get_windower_settings().y_res / 2 - (textheight / 2))
 
 windower.register_event('status change', function(new_status_id)
-print(new_status_id)
 	if new_status_id == 2 then
 		-- show
 		deads:size(shadewidth, shadeheight)
