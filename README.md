@@ -58,3 +58,12 @@ This addon displays vital bars for easy tracking
 3. Create the theme specific settings file in the theme folder. Copy settings.xml from the data folder to start. Name it *settings_THEMENAME.xml*
 4. Adjust settings in the new file according to your needs.
 5. Copy the theme specific settings to **_Windower4\addons\xivbar\data\ThemeSelectorResources_**
+
+
+
+
+
+
+# YouDied
+Adds an Elden Ring like you died message on screen when you die.
+That's all.
