@@ -14,8 +14,7 @@
 https://user-images.githubusercontent.com/12958339/228619252-bd97cb6a-1218-4866-974a-855fbeb141fd.mp4
 
 ## Elden Ring death message
-![dead](https://user-images.githubusercontent.com/12958339/228691947-9935ef19-462a-4abd-807b-77e30d64d7a2.png)
-
+https://user-images.githubusercontent.com/12958339/228695809-7abfd144-df69-4a56-92d3-357560656710.mp4
 
 ## Removed features:
 1. Compact mode
