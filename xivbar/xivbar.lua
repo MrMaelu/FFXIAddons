@@ -211,7 +211,7 @@ if theme_options.numberprefix == true then
 	elseif flag == 2 then
 		prefix = 'MP '
 	elseif flag == 1 then
-		prefix = 'MP '
+		prefix = 'HP '
 	end
 else
 	prefix = ''
@@ -338,7 +338,6 @@ windower.register_event('prerender', function()
 end)
 
 windower.register_event('status change', function(new_status_id)
---print(new_status_id)
     if xivbar.hide_bars == false and (new_status_id == 4) then
         xivbar.hide_bars = true
         hide()
