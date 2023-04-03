@@ -39,6 +39,7 @@ theme.apply = function (settings)
 	options.bar_background = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/bar_bg.png'
     options.bar_foreground = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/bar_fg.png'
     options.bar_hp = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/hp_fg.png'
+	options.bar_hp_shade = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/hp_shade.png'
     options.bar_mp = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/mp_fg.png'
     options.bar_tp1 = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/tp1_fg.png'
 	options.bar_tp2 = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/tp2_fg.png'

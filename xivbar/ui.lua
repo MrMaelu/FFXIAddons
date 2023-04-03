@@ -40,9 +40,11 @@ local images_setup = {
 }
 
 -- ui variables
+
 ui.background = images.new(images_setup)
 
 ui.hp_bar = images.new(images_setup)
+ui.hp_shade = images.new(images_setup)
 ui.mp_bar = images.new(images_setup)
 
 ui.tp_bar1 = images.new(images_setup)
@@ -90,6 +92,7 @@ function ui:load(theme_options)
 	setup_image(self.weaponicon, theme_options.bar_weaponicon)
 	setup_image(self.jobicon, theme_options.bar_jobicon)
     setup_image(self.hp_bar, theme_options.bar_hp)
+	setup_image(self.hp_shade, theme_options.bar_hp_shade)
     setup_image(self.mp_bar, theme_options.bar_mp)
     
 	setup_image(self.tp_bar1, theme_options.bar_tp1)
@@ -121,6 +124,8 @@ function ui:position(theme_options)
 	self.weaponicon:alpha(theme_options.weaponicon_alpha)
 
     self.hp_bar:pos(x + theme_options.hp_bar_posx, y + theme_options.hp_bar_posy)
+	self.hp_shade:pos(x , y)
+	self.hp_shade:alpha(255)
     self.mp_bar:pos(x + theme_options.mp_bar_posx, y + theme_options.mp_bar_posy)
 	self.tp_bar1:pos(x + theme_options.tp_bar1_posx, y + theme_options.tp_bar1_posy)
 	self.tp_bar2:pos(x + theme_options.tp_bar2_posx, y + theme_options.tp_bar2_posy)
@@ -147,6 +152,7 @@ function ui:hide()
 	self.jobicon:hide()
 	self.weaponicon:hide()
     self.hp_bar:hide()
+	self.hp_shade:hide()
     self.hp_text:hide()
     self.mp_bar:hide()
     self.mp_text:hide()
@@ -165,7 +171,8 @@ function ui:show()
 	self.jobicon:show()
 	self.weaponicon:show()
     self.hp_bar:show()
-    self.hp_text:show()
+    self.hp_shade:show()
+	self.hp_text:show()
     self.mp_bar:show()
     self.mp_text:show()
 

@@ -19,7 +19,7 @@
                 <Red>80</Red>
             </FullTpColor>
             <Offset>0</Offset>
-            <Size>12</Size>
+            <Size>16</Size>
             <Stroke>
                 <Alpha>0</Alpha>
                 <Blue>0</Blue>
@@ -39,58 +39,58 @@
                 <Offset>0</Offset>
                 <Spacing>0</Spacing>
                 <Width>657</Width>
-                <alphamax>255</alphamax>
-                <alphamin>150</alphamin>
+                <alphamax>225</alphamax>
+                <alphamin>180</alphamin>
                 <hp>
-                    <height>13</height>
-                    <posx>27</posx>
-                    <posy>41</posy>
-                    <textx>338</textx>
-                    <texty>30</texty>
-                    <width>298</width>
+                    <height>34</height>
+                    <posx>200</posx>
+                    <posy>5</posy>
+                    <textx>195</textx>
+                    <texty>28</texty>
+                    <width>251</width>
                 </hp>
                 <mp>
-                    <height>8</height>
-                    <posx>27</posx>
-                    <posy>82</posy>
-                    <textx>338</textx>
-                    <texty>69</texty>
-                    <width>298</width>
+                    <height>17</height>
+                    <posx>321</posx>
+                    <posy>21</posy>
+                    <textx>325</textx>
+                    <texty>30</texty>
+                    <width>122</width>
                 </mp>
                 <tp>
                     <a>
-                        <posx>60</posx>
-                        <posy>4</posy>
-                        <width>20</width>
+                        <posx>523</posx>
+                        <posy>25</posy>
+                        <width>86</width>
                     </a>
                     <b>
-                        <posx>92</posx>
-                        <posy>4</posy>
-                        <width>20</width>
+                        <posx>530</posx>
+                        <posy>5</posy>
+                        <width>86</width>
                     </b>
                     <c>
-                        <posx>124</posx>
-                        <posy>4</posy>
-                        <width>20</width>
+                        <posx>530</posx>
+                        <posy>5</posy>
+                        <width>86</width>
                     </c>
-                    <height>20</height>
-                    <textx>158</textx>
-                    <texty>-2</texty>
+                    <height>15</height>
+                    <textx>525</textx>
+                    <texty>30</texty>
                 </tp>
             </Bar>
             <Compact>false</Compact>
             <DimTpBar>true</DimTpBar>
-            <Name>hades</Name>
-            <bgalpha>180</bgalpha>
-            <fgalpha>180</fgalpha>
-            <height>105</height>
-            <jobiconalpha>0</jobiconalpha>
-            <jobiconposx>0</jobiconposx>
-            <jobiconposy>0</jobiconposy>
-            <weaponiconalpha>0</weaponiconalpha>
-            <weaponiconposx>0</weaponiconposx>
-            <weaponiconposy>0</weaponiconposy>
-            <width>341</width>
+            <Name>ZZZ</Name>
+            <bgalpha>200</bgalpha>
+            <fgalpha>200</fgalpha>
+            <height>65</height>
+            <jobiconalpha>225</jobiconalpha>
+            <jobiconposx>460</jobiconposx>
+            <jobiconposy>5</jobiconposy>
+            <weaponiconalpha>225</weaponiconalpha>
+            <weaponiconposx>495</weaponiconposx>
+            <weaponiconposy>5</weaponiconposy>
+            <width>624</width>
         </Theme>
     </global>
 </settings>
