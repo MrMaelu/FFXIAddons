@@ -11,14 +11,13 @@
 7. Supports an Elden Ring like death message. Only enabled for the EldenRing theme by default.
 
 ## Added themes:
-![Themes](https://user-images.githubusercontent.com/12958339/229644727-147ccd09-7eea-47ce-8155-166e9237c504.png)
+![Themes](https://user-images.githubusercontent.com/12958339/229646627-c00329bc-5138-4a9b-8091-5f89c01759b0.png)
 
 ## Theme selector
 https://user-images.githubusercontent.com/12958339/228619252-bd97cb6a-1218-4866-974a-855fbeb141fd.mp4
 
 ## Elden Ring death message
 https://user-images.githubusercontent.com/12958339/228695809-7abfd144-df69-4a56-92d3-357560656710.mp4
-
 
 ## Removed features:
 1. Compact mode
