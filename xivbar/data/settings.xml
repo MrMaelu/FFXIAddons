@@ -2,15 +2,15 @@
 <settings>
     <global>
         <Bars>
-            <OffsetX>0</OffsetX>
-            <OffsetY>-300</OffsetY>
+            <OffsetX>-50</OffsetX>
+            <OffsetY>-330</OffsetY>
         </Bars>
         <Texts>
             <Color>
-                <Alpha>255</Alpha>
-                <Blue>250</Blue>
-                <Green>252</Green>
-                <Red>253</Red>
+                <Alpha>200</Alpha>
+                <Blue>255</Blue>
+                <Green>255</Green>
+                <Red>255</Red>
             </Color>
             <Font>Dubai Medium</Font>
             <FullTpColor>
@@ -19,7 +19,7 @@
                 <Red>80</Red>
             </FullTpColor>
             <Offset>0</Offset>
-            <Size>16</Size>
+            <Size>18</Size>
             <Stroke>
                 <Alpha>0</Alpha>
                 <Blue>0</Blue>
@@ -27,7 +27,7 @@
                 <Red>0</Red>
                 <Width>2</Width>
             </Stroke>
-            <prefix>true</prefix>
+            <prefix>false</prefix>
         </Texts>
         <Theme>
             <Bar>
@@ -39,58 +39,58 @@
                 <Offset>0</Offset>
                 <Spacing>0</Spacing>
                 <Width>657</Width>
-                <alphamax>225</alphamax>
-                <alphamin>180</alphamin>
+                <alphamax>180</alphamax>
+                <alphamin>120</alphamin>
                 <hp>
-                    <height>34</height>
-                    <posx>200</posx>
-                    <posy>5</posy>
-                    <textx>195</textx>
-                    <texty>28</texty>
-                    <width>251</width>
+                    <height>19</height>
+                    <posx>52</posx>
+                    <posy>9</posy>
+                    <textx>528</textx>
+                    <texty>-78</texty>
+                    <width>459</width>
                 </hp>
                 <mp>
-                    <height>17</height>
-                    <posx>321</posx>
-                    <posy>21</posy>
-                    <textx>325</textx>
-                    <texty>30</texty>
-                    <width>122</width>
+                    <height>19</height>
+                    <posx>52</posx>
+                    <posy>43</posy>
+                    <textx>528</textx>
+                    <texty>-45</texty>
+                    <width>459</width>
                 </mp>
                 <tp>
                     <a>
-                        <posx>523</posx>
-                        <posy>25</posy>
-                        <width>86</width>
+                        <posx>52</posx>
+                        <posy>77</posy>
+                        <width>143</width>
                     </a>
                     <b>
-                        <posx>530</posx>
-                        <posy>5</posy>
-                        <width>86</width>
+                        <posx>210</posx>
+                        <posy>77</posy>
+                        <width>143</width>
                     </b>
                     <c>
-                        <posx>530</posx>
-                        <posy>5</posy>
-                        <width>86</width>
+                        <posx>368</posx>
+                        <posy>77</posy>
+                        <width>143</width>
                     </c>
-                    <height>15</height>
-                    <textx>525</textx>
-                    <texty>30</texty>
+                    <height>19</height>
+                    <textx>528</textx>
+                    <texty>-10</texty>
                 </tp>
             </Bar>
             <Compact>false</Compact>
             <DimTpBar>true</DimTpBar>
-            <Name>ZZZ</Name>
-            <bgalpha>200</bgalpha>
-            <fgalpha>200</fgalpha>
-            <height>65</height>
-            <jobiconalpha>225</jobiconalpha>
-            <jobiconposx>460</jobiconposx>
+            <Name>maelu4small</Name>
+            <bgalpha>150</bgalpha>
+            <fgalpha>180</fgalpha>
+            <height>105</height>
+            <jobiconalpha>180</jobiconalpha>
+            <jobiconposx>4</jobiconposx>
             <jobiconposy>5</jobiconposy>
-            <weaponiconalpha>225</weaponiconalpha>
-            <weaponiconposx>495</weaponiconposx>
-            <weaponiconposy>5</weaponiconposy>
-            <width>624</width>
+            <weaponiconalpha>180</weaponiconalpha>
+            <weaponiconposx>4</weaponiconposx>
+            <weaponiconposy>55</weaponiconposy>
+            <width>520</width>
         </Theme>
     </global>
 </settings>
