@@ -30,7 +30,8 @@ https://user-images.githubusercontent.com/12958339/228695809-7abfd144-df69-4a56-
 * "xivbar y <number>" will move the bar down with positive and up with negative numbers.
 * "xivbar reset" will reset the current theme to their default settings.
 * "xivbar save" will save the settings to the theme settings file.
-* If you do not save the settings will be returned to their defaults when you change themes.
+
+If you do not save the settings will be returned to their defaults when you change themes.
 
 ----------------------------------------------------------------------------------------
 
