@@ -34,15 +34,11 @@ defaults.Bars.OffsetY = 0
 
 defaults.Theme = {}
 defaults.Theme.Name = 'maelu3'
-defaults.Theme.Compact = true
 defaults.Theme.Bar = {}
 defaults.Theme.Bar.Width = 0
+defaults.Theme.Bar.Height = 0
 defaults.Theme.Bar.Spacing = 0
 defaults.Theme.Bar.Offset = 0
-defaults.Theme.Bar.Compact = {}
-defaults.Theme.Bar.Compact.Width = 0
-defaults.Theme.Bar.Compact.Spacing = 0
-defaults.Theme.Bar.Compact.Offset = 0
 defaults.Theme.DimTpBar = true
 
 defaults.Texts = {}

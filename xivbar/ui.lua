@@ -36,7 +36,7 @@ local text_setup = {
 }
 
 local images_setup = {
-    draggable = false
+    draggable = true
 }
 
 -- ui variables
@@ -66,7 +66,7 @@ ui.dead = images.new(images_setup)
 function setup_image(image, path)
     image:path(path)
     image:repeat_xy(1, 1)
-    image:draggable(false)
+    image:draggable(true)
     image:fit(true)
     image:show()
 end

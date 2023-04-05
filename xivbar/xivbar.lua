@@ -31,12 +31,14 @@ _addon.name = 'XIV Bar'
 _addon.author = 'Edeon'
 _addon.version = '1.0'
 _addon.language = 'english'
+_addon.commands = {'xivbar'}
 
 -- Libs
 config = require('config')
 texts  = require('texts')
 images = require('images')
 res = require('resources')
+file = require('files')
 
 -- User settings
 local defaults = require('defaults')
@@ -391,4 +393,63 @@ windower.register_event('load', function()
         info.range_bag = equip.range_bag
         update_weapon()
     end
+end)
+
+windower.register_event('addon command', function(...)
+    local args = {...}
+    if args == nil then 
+        print('xivbar: invalid number of arguments')
+        return
+    end
+    if args[1] == 'save' then
+		config.save(settings)
+		local readf = io.open(windower.addon_path .. "data/settings.xml")
+		local readfile = readf:read("*a")
+		readf:close()
+		local savefile = io.open(windower.addon_path .. "data/ThemeSelectorResources/settings_" .. settings.Theme.Name ..".xml", "w")
+		savefile:write(readfile)
+		savefile:close()
+		print('Settings saved to settings_' .. settings.Theme.Name .. '.xml')
+	elseif (args[1] == 'x' and tonumber(args[2]) ~= nil) then
+		settings.Bars.OffsetX = settings.Bars.OffsetX + args[2]
+		config.save(settings)
+		windower.send_command('lua reload xivbar')
+	elseif (args[1] == 'y'  and tonumber(args[2]) ~= nil) then
+		settings.Bars.OffsetY = settings.Bars.OffsetY + args[2]
+		config.save(settings)
+		windower.send_command('lua reload xivbar')
+	elseif args[1] == 'reset' then
+		local readf = io.open(windower.addon_path .. "themes/" .. settings.Theme.Name .. "/settings_" .. settings.Theme.Name .. ".xml")
+		local readfile = readf:read("*a")
+		readf:close()
+		local savefile = io.open(windower.addon_path .. "data/settings.xml", "w")
+		savefile:write(readfile)
+		savefile:close()
+		local savefile = io.open(windower.addon_path .. "data/ThemeSelectorResources/settings_" .. settings.Theme.Name ..".xml", "w")
+		savefile:write(readfile)
+		savefile:close()
+		print('Settings for' .. settings.Theme.Name .. ' restored to defaults.')
+		windower.send_command('lua reload xivbar')
+	elseif (args[1] == 'theme' and args[2] ~= nil) then
+		if io.open(windower.addon_path .. "data/ThemeSelectorResources/settings_" .. args[2] ..".xml") ~= nil then
+			local readf = io.open(windower.addon_path .. "data/ThemeSelectorResources/settings_" .. args[2] ..".xml")
+			local readfile = readf:read("*a")
+			readf:close()
+			local savefile = io.open(windower.addon_path .. "data/settings.xml", "w")
+			savefile:write(readfile)
+			savefile:close()
+			print('Theme ' .. args[2] .. ' loaded.')
+			windower.send_command('lua reload xivbar')
+		else
+			print('No theme with that name found.')
+		end
+	elseif args[1] == 'help' then
+		print('XIVBAR commands:')
+		print('"xivbar theme <themename>" will change theme, if the requested theme exists.')
+		print('"xivbar x <number>" will move the bar right with positive and left with negative numbers.')
+		print('"xivbar y <number>" will move the bar down with positive and up with negative numbers.')
+		print('"xivbar reset" will reset the current theme to their default settings.')
+		print('"xivbar save" will save the settings to the theme settings file.')
+		print('If you do not save the settings will be returned to their defaults when you change themes.')
+	end
 end)
