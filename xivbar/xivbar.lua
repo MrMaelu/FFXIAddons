@@ -26,6 +26,8 @@
         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ]]
 
+-- This addon has been heavily modified by MrMaelu and is no longer considered compatible with the original addon.
+
 -- Addon description
 _addon.name = 'XIV Bar'
 _addon.author = 'Edeon'
@@ -398,7 +400,7 @@ end)
 windower.register_event('addon command', function(...)
     local args = {...}
     if args == nil then 
-        print('xivbar: invalid number of arguments')
+        windower.add_to_chat(8, 'xivbar: invalid number of arguments')
         return
     end
     if args[1] == 'save' then
@@ -409,15 +411,17 @@ windower.register_event('addon command', function(...)
 		local savefile = io.open(windower.addon_path .. "data/ThemeSelectorResources/settings_" .. settings.Theme.Name ..".xml", "w")
 		savefile:write(readfile)
 		savefile:close()
-		print('Settings saved to settings_' .. settings.Theme.Name .. '.xml')
+		windower.add_to_chat(8, 'Settings saved to settings_' .. settings.Theme.Name .. '.xml')
 	elseif (args[1] == 'x' and tonumber(args[2]) ~= nil) then
 		settings.Bars.OffsetX = settings.Bars.OffsetX + args[2]
 		config.save(settings)
-		windower.send_command('lua reload xivbar')
+		local theme_options = theme.apply(settings)
+		initialize()
 	elseif (args[1] == 'y'  and tonumber(args[2]) ~= nil) then
 		settings.Bars.OffsetY = settings.Bars.OffsetY + args[2]
 		config.save(settings)
-		windower.send_command('lua reload xivbar')
+		theme_options = theme.apply(settings)
+		initialize()
 	elseif args[1] == 'reset' then
 		local readf = io.open(windower.addon_path .. "themes/" .. settings.Theme.Name .. "/settings_" .. settings.Theme.Name .. ".xml")
 		local readfile = readf:read("*a")
@@ -428,8 +432,8 @@ windower.register_event('addon command', function(...)
 		local savefile = io.open(windower.addon_path .. "data/ThemeSelectorResources/settings_" .. settings.Theme.Name ..".xml", "w")
 		savefile:write(readfile)
 		savefile:close()
-		print('Settings for' .. settings.Theme.Name .. ' restored to defaults.')
-		windower.send_command('lua reload xivbar')
+		windower.add_to_chat(8, 'Settings for ' .. settings.Theme.Name .. ' restored to defaults.')
+		windower.send_command("lua r xivbar")
 	elseif (args[1] == 'theme' and args[2] ~= nil) then
 		if io.open(windower.addon_path .. "data/ThemeSelectorResources/settings_" .. args[2] ..".xml") ~= nil then
 			local readf = io.open(windower.addon_path .. "data/ThemeSelectorResources/settings_" .. args[2] ..".xml")
@@ -438,18 +442,24 @@ windower.register_event('addon command', function(...)
 			local savefile = io.open(windower.addon_path .. "data/settings.xml", "w")
 			savefile:write(readfile)
 			savefile:close()
-			print('Theme ' .. args[2] .. ' loaded.')
-			windower.send_command('lua reload xivbar')
+			windower.add_to_chat(8, 'Theme ' .. args[2] .. ' loaded.')
+			windower.send_command("lua r xivbar")			
 		else
-			print('No theme with that name found.')
+			windower.add_to_chat(8, 'No theme with that name found.')
 		end
+	elseif args[1] == 'center' then
+		settings.Bars.OffsetX = 0
+		settings.Bars.OffsetY = -(windower.get_windower_settings().y_res/2) - (theme_options.total_height / 2)
+		theme_options = theme.apply(settings)
+		initialize()
 	elseif args[1] == 'help' then
-		print('XIVBAR commands:')
-		print('"xivbar theme <themename>" will change theme, if the requested theme exists.')
-		print('"xivbar x <number>" will move the bar right with positive and left with negative numbers.')
-		print('"xivbar y <number>" will move the bar down with positive and up with negative numbers.')
-		print('"xivbar reset" will reset the current theme to their default settings.')
-		print('"xivbar save" will save the settings to the theme settings file.')
-		print('If you do not save the settings will be returned to their defaults when you change themes.')
+		windower.add_to_chat(8, 'XIVBAR commands:')
+		windower.add_to_chat(8, '"xivbar theme <themename>" will change theme, if the requested theme exists.')
+		windower.add_to_chat(8, '"xivbar x <number>" will move the bar right with positive and left with negative numbers.')
+		windower.add_to_chat(8, '"xivbar y <number>" will move the bar down with positive and up with negative numbers.')
+		windower.add_to_chat(8, '"xivbar y center" will center the bar on your screen')
+		windower.add_to_chat(8, '"xivbar reset" will reset the current theme to their default settings and reload the addon.')
+		windower.add_to_chat(8, '"xivbar save" will save the settings to the theme settings file.')
+		windower.add_to_chat(8, 'If you do not save the settings will be returned to their defaults when you change themes.')
 	end
 end)

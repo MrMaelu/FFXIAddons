@@ -31,16 +31,17 @@
         </Texts>
         <Theme>
             <Bar>
-                <Compact>
-                    <Offset>0</Offset>
-                    <Spacing>0</Spacing>
-                    <Width>0</Width>
-                </Compact>
+                <Height>0</Height>
                 <Offset>0</Offset>
                 <Spacing>0</Spacing>
                 <Width>657</Width>
                 <alphamax>180</alphamax>
                 <alphamin>120</alphamin>
+                <compact>
+                    <offset>0</offset>
+                    <spacing>0</spacing>
+                    <width>0</width>
+                </compact>
                 <hp>
                     <height>13</height>
                     <posx>151</posx>
@@ -78,10 +79,10 @@
                     <texty>-10</texty>
                 </tp>
             </Bar>
-            <Compact>false</Compact>
             <DimTpBar>true</DimTpBar>
             <Name>XVI</Name>
             <bgalpha>180</bgalpha>
+            <compact>false</compact>
             <fgalpha>180</fgalpha>
             <height>92</height>
             <jobiconalpha>180</jobiconalpha>
