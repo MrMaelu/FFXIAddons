@@ -70,6 +70,11 @@ local tp_bar_height = theme_options.tp_bar_height
 
 local deathmessage = theme_options.deathmessage
 
+-- vars
+local themefolder = windower.addon_path .. "themes/"
+local settingsfolder = windower.addon_path .. "data/"
+local resourcefolder = windower.addon_path .. "data/ThemeSelectorResources/"
+
 -- initialize addon
 function initialize()
     ui:load(theme_options)
@@ -405,17 +410,12 @@ windower.register_event('addon command', function(...)
     end
     if args[1] == 'save' then
 		config.save(settings)
-		local readf = io.open(windower.addon_path .. "data/settings.xml")
-		local readfile = readf:read("*a")
-		readf:close()
-		local savefile = io.open(windower.addon_path .. "data/ThemeSelectorResources/settings_" .. settings.Theme.Name ..".xml", "w")
-		savefile:write(readfile)
-		savefile:close()
+		copy(windower.addon_path .. "data/settings.xml", windower.addon_path .. "data/ThemeSelectorResources/settings_" .. settings.Theme.Name ..".xml")
 		windower.add_to_chat(8, 'Settings saved to settings_' .. settings.Theme.Name .. '.xml')
 	elseif (args[1] == 'x' and tonumber(args[2]) ~= nil) then
 		settings.Bars.OffsetX = settings.Bars.OffsetX + args[2]
 		config.save(settings)
-		local theme_options = theme.apply(settings)
+		theme_options = theme.apply(settings)
 		initialize()
 	elseif (args[1] == 'y'  and tonumber(args[2]) ~= nil) then
 		settings.Bars.OffsetY = settings.Bars.OffsetY + args[2]
@@ -423,25 +423,13 @@ windower.register_event('addon command', function(...)
 		theme_options = theme.apply(settings)
 		initialize()
 	elseif args[1] == 'reset' then
-		local readf = io.open(windower.addon_path .. "themes/" .. settings.Theme.Name .. "/settings_" .. settings.Theme.Name .. ".xml")
-		local readfile = readf:read("*a")
-		readf:close()
-		local savefile = io.open(windower.addon_path .. "data/settings.xml", "w")
-		savefile:write(readfile)
-		savefile:close()
-		local savefile = io.open(windower.addon_path .. "data/ThemeSelectorResources/settings_" .. settings.Theme.Name ..".xml", "w")
-		savefile:write(readfile)
-		savefile:close()
+		copy(themefolder .. settings.Theme.Name .. "/settings_" .. settings.Theme.Name .. ".xml", settingsfolder .. "settings.xml")
+		copy(themefolder .. settings.Theme.Name .. "/settings_" .. settings.Theme.Name .. ".xml", resourcefolder .. "settings_" .. settings.Theme.Name ..".xml")
 		windower.add_to_chat(8, 'Settings for ' .. settings.Theme.Name .. ' restored to defaults.')
 		windower.send_command("lua r xivbar")
 	elseif (args[1] == 'theme' and args[2] ~= nil) then
-		if io.open(windower.addon_path .. "data/ThemeSelectorResources/settings_" .. args[2] ..".xml") ~= nil then
-			local readf = io.open(windower.addon_path .. "data/ThemeSelectorResources/settings_" .. args[2] ..".xml")
-			local readfile = readf:read("*a")
-			readf:close()
-			local savefile = io.open(windower.addon_path .. "data/settings.xml", "w")
-			savefile:write(readfile)
-			savefile:close()
+		if io.open(resourcefolder .. "settings_" .. args[2] ..".xml") ~= nil then
+			copy(resourcefolder .. "settings_" .. args[2] ..".xml", settingsfolder .. "settings.xml")
 			windower.add_to_chat(8, 'Theme ' .. args[2] .. ' loaded.')
 			windower.send_command("lua r xivbar")			
 		else
@@ -452,14 +440,30 @@ windower.register_event('addon command', function(...)
 		settings.Bars.OffsetY = -(windower.get_windower_settings().y_res/2) - (theme_options.total_height / 2)
 		theme_options = theme.apply(settings)
 		initialize()
+	elseif (args[1] == 'pos' and tonumber(args[2]) ~= nil and tonumber(args[3]) ~= nil) then
+		settings.Bars.OffsetX = -(windower.get_windower_settings().x_res/2) + theme_options.total_width + args[2]
+		settings.Bars.OffsetY = -(windower.get_windower_settings().y_res) + args[3]
+		theme_options = theme.apply(settings)
+		initialize()
+		windower.add_to_chat(8, 'xivbar placed at ' .. args[2] .. ' x ' ..  args[3])
 	elseif args[1] == 'help' then
 		windower.add_to_chat(8, 'XIVBAR commands:')
 		windower.add_to_chat(8, '"xivbar theme <themename>" will change theme, if the requested theme exists.')
+		windower.add_to_chat(8, '"xivbar pos <number> <number>" will place the bar at the specified position.')
 		windower.add_to_chat(8, '"xivbar x <number>" will move the bar right with positive and left with negative numbers.')
 		windower.add_to_chat(8, '"xivbar y <number>" will move the bar down with positive and up with negative numbers.')
-		windower.add_to_chat(8, '"xivbar y center" will center the bar on your screen')
+		windower.add_to_chat(8, '"xivbar center" will center the bar on your screen')
 		windower.add_to_chat(8, '"xivbar reset" will reset the current theme to their default settings and reload the addon.')
 		windower.add_to_chat(8, '"xivbar save" will save the settings to the theme settings file.')
 		windower.add_to_chat(8, 'If you do not save the settings will be returned to their defaults when you change themes.')
 	end
 end)
+
+function copy(infile, outfile)
+	local readf = io.open(infile)
+	local readfile = readf:read("*a")
+	readf:close()
+	local savefile = io.open(outfile, "w")
+	savefile:write(readfile)
+	savefile:close()
+end
