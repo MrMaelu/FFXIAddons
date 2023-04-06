@@ -18,6 +18,8 @@ https://user-images.githubusercontent.com/12958339/228619252-bd97cb6a-1218-4866-
 
 ## Elden Ring death message
 https://user-images.githubusercontent.com/12958339/228695809-7abfd144-df69-4a56-92d3-357560656710.mp4
+#### This is also available as a separate addon.
+
 
 ## Removed features:
 1. Compact mode
@@ -67,9 +69,11 @@ This addon displays vital bars for easy tracking
 
 
 ## How to edit the settings
+The easiest way is to use the in-game console commands.
+Alternatively do it manually:
 1. Login to your character in FFXI
-2. Edit the addon's settings file: **_Windower4\addons\xivbar\data\settings.xml_**
-3. Save the file 
+2. Edit the addon's settings file: **_xivbar\data\settings.xml_**
+3. Save the file
 4. Press Insert in FFXI to access the windower console 
 5. Type ``` lua r xivbar ``` to reload the addon
 6. Press Insert in FFXI again to close the windower console
@@ -83,5 +87,7 @@ This addon displays vital bars for easy tracking
 
 
 # YouDied
-Adds an Elden Ring like you died message on screen when you die.
+Adds an Elden Ring like "you died" message on screen when you die.
 That's all.
+
+![deadcrop](https://user-images.githubusercontent.com/12958339/230463861-25c98fca-e302-4a33-9a5c-581c236aecb4.png)
