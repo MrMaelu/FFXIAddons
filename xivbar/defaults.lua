@@ -35,11 +35,12 @@ defaults.Bars.OffsetY = 0
 defaults.Theme = {}
 defaults.Theme.Name = 'maelu3'
 defaults.Theme.Bar = {}
-defaults.Theme.Bar.Width = 0
-defaults.Theme.Bar.Height = 0
-defaults.Theme.Bar.Spacing = 0
-defaults.Theme.Bar.Offset = 0
 defaults.Theme.DimTpBar = true
+defaults.Theme.scale = 100
+defaults.Theme.jisx = 0
+defaults.Theme.jisy = 0
+defaults.Theme.wisx = 0
+defaults.Theme.wisy = 0
 
 defaults.Texts = {}
 defaults.Texts.Font = 'sans-serif'

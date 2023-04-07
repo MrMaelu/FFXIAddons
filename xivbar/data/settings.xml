@@ -2,8 +2,8 @@
 <settings>
     <global>
         <Bars>
-            <OffsetX>-20</OffsetX>
-            <OffsetY>-310</OffsetY>
+            <OffsetX>0</OffsetX>
+            <OffsetY>-300</OffsetY>
         </Bars>
         <Texts>
             <Color>
@@ -18,79 +18,84 @@
                 <Green>180</Green>
                 <Red>80</Red>
             </FullTpColor>
-            <Offset>55</Offset>
-            <Size>14</Size>
+            <Offset>0</Offset>
+            <Size>16</Size>
             <Stroke>
                 <Alpha>0</Alpha>
                 <Blue>0</Blue>
                 <Green>0</Green>
                 <Red>0</Red>
-                <Width>0</Width>
+                <Width>2</Width>
             </Stroke>
+            <prefix>true</prefix>
         </Texts>
         <Theme>
             <Bar>
-                <Height>0</Height>
-                <Offset>0</Offset>
-                <Spacing>0</Spacing>
-                <Width>418</Width>
-                <alphamax>150</alphamax>
-                <alphamin>100</alphamin>
+                <alphamax>225</alphamax>
+                <alphamin>180</alphamin>
                 <compact>
                     <offset>0</offset>
                     <spacing>0</spacing>
                     <width>0</width>
                 </compact>
                 <hp>
-                    <height>15</height>
-                    <posx>5</posx>
-                    <posy>24</posy>
-                    <textx>34</textx>
-                    <texty>-29</texty>
-                    <width>418</width>
+                    <height>34</height>
+                    <posx>200</posx>
+                    <posy>5</posy>
+                    <textx>195</textx>
+                    <texty>28</texty>
+                    <width>251</width>
                 </hp>
                 <mp>
-                    <height>15</height>
-                    <posx>5</posx>
-                    <posy>45</posy>
-                    <textx>34</textx>
-                    <texty>29</texty>
-                    <width>418</width>
+                    <height>17</height>
+                    <posx>321</posx>
+                    <posy>21</posy>
+                    <textx>325</textx>
+                    <texty>30</texty>
+                    <width>122</width>
                 </mp>
+                <offset>0</offset>
+                <spacing>0</spacing>
                 <tp>
                     <a>
-                        <posx>432</posx>
-                        <posy>50</posy>
-                        <width>205</width>
+                        <posx>523</posx>
+                        <posy>25</posy>
+                        <width>86</width>
                     </a>
                     <b>
-                        <posx>432</posx>
-                        <posy>37</posy>
-                        <width>205</width>
+                        <posx>530</posx>
+                        <posy>5</posy>
+                        <width>86</width>
                     </b>
                     <c>
-                        <posx>432</posx>
-                        <posy>24</posy>
-                        <width>205</width>
+                        <posx>530</posx>
+                        <posy>5</posy>
+                        <width>86</width>
                     </c>
-                    <height>7</height>
-                    <textx>460</textx>
-                    <texty>-29</texty>
+                    <height>15</height>
+                    <textx>525</textx>
+                    <texty>30</texty>
                 </tp>
+                <width>657</width>
             </Bar>
             <DimTpBar>true</DimTpBar>
-            <Name>maelu2</Name>
-            <bgalpha>180</bgalpha>
-            <compact>true</compact>
-            <fgalpha>180</fgalpha>
-            <height>81</height>
-            <jobiconalpha>180</jobiconalpha>
-            <jobiconposx>-80</jobiconposx>
+            <Name>ZZZ</Name>
+            <bgalpha>200</bgalpha>
+            <compact>false</compact>
+            <fgalpha>200</fgalpha>
+            <height>65</height>
+            <jisx>45</jisx>
+            <jisy>45</jisy>
+            <jobiconalpha>225</jobiconalpha>
+            <jobiconposx>445</jobiconposx>
             <jobiconposy>0</jobiconposy>
-            <weaponiconalpha>180</weaponiconalpha>
-            <weaponiconposx>650</weaponiconposx>
+            <scale>100</scale>
+            <weaponiconalpha>225</weaponiconalpha>
+            <weaponiconposx>485</weaponiconposx>
             <weaponiconposy>0</weaponiconposy>
-            <width>418</width>
+            <width>624</width>
+            <wisx>40</wisx>
+            <wisy>40</wisy>
         </Theme>
     </global>
 </settings>

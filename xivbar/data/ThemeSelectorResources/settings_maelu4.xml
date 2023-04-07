@@ -2,7 +2,7 @@
 <settings>
     <global>
         <Bars>
-            <OffsetX>-50</OffsetX>
+            <OffsetX>0</OffsetX>
             <OffsetY>-330</OffsetY>
         </Bars>
         <Texts>
@@ -31,10 +31,6 @@
         </Texts>
         <Theme>
             <Bar>
-                <Height>0</Height>
-                <Offset>0</Offset>
-                <Spacing>0</Spacing>
-                <Width>657</Width>
                 <alphamax>180</alphamax>
                 <alphamin>120</alphamin>
                 <compact>
@@ -58,6 +54,8 @@
                     <texty>-52</texty>
                     <width>612</width>
                 </mp>
+                <offset>0</offset>
+                <spacing>0</spacing>
                 <tp>
                     <a>
                         <posx>70</posx>
@@ -78,25 +76,31 @@
                     <textx>75</textx>
                     <texty>-7</texty>
                 </tp>
+                <width>657</width>
             </Bar>
             <DimTpBar>true</DimTpBar>
             <Name>maelu4</Name>
             <bgalpha>150</bgalpha>
             <compact>false</compact>
-            <fgalpha>180</fgalpha>
+            <fgalpha>0</fgalpha>
             <height>140</height>
+            <jisx>80</jisx>
+            <jisy>80</jisy>
             <jobiconalpha>180</jobiconalpha>
-            <jobiconposx>10</jobiconposx>
-            <jobiconposy>5</jobiconposy>
+            <jobiconposx>-5</jobiconposx>
+            <jobiconposy>-5</jobiconposy>
+            <scale>100</scale>
             <weaponiconalpha>180</weaponiconalpha>
-            <weaponiconposx>5</weaponiconposx>
-            <weaponiconposy>75</weaponiconposy>
+            <weaponiconposx>-5</weaponiconposx>
+            <weaponiconposy>65</weaponiconposy>
             <width>693</width>
+            <wisx>80</wisx>
+            <wisy>80</wisy>
         </Theme>
     </global>
     <maelu>
-        <Bars>
-            <OffsetX>50</OffsetX>
-        </Bars>
+        <Theme>
+            <scale>75</scale>
+        </Theme>
     </maelu>
 </settings>

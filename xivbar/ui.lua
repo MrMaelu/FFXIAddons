@@ -60,14 +60,12 @@ ui.tp_text = texts.new(text_setup)
 ui.jobicon = images.new(images_setup)
 ui.weaponicon = images.new(images_setup)
 
-ui.dead = images.new(images_setup)
-
 -- setup images
 function setup_image(image, path)
     image:path(path)
     image:repeat_xy(1, 1)
     image:draggable(true)
-    image:fit(true)
+    image:fit(false)
     image:show()
 end
 
@@ -82,6 +80,7 @@ function setup_text(text, theme_options)
     text:stroke_color(theme_options.font_stroke_color_red, theme_options.font_stroke_color_green, theme_options.font_stroke_color_blue)
     text:stroke_width(theme_options.font_stroke_width)
     text:right_justified()
+	text:alpha(theme_options.font_alpha)
     text:show()
 end
 
@@ -103,8 +102,6 @@ function ui:load(theme_options)
     setup_text(self.mp_text, theme_options)
     setup_text(self.tp_text, theme_options)
 
-	setup_image(self.dead, theme_options.deathmessage)
-
     self:position(theme_options)
 end
 
@@ -117,6 +114,11 @@ function ui:position(theme_options)
 	self.background:alpha(theme_options.bgalpha)
 	self.foreground:pos(x, y)
 	self.foreground:alpha(theme_options.fgalpha)
+
+	bg_width = math.floor(theme_options.total_width * theme_options.scale / 100)
+	bg_height = math.floor(theme_options.total_height * theme_options.scale / 100)
+	self.background:size(bg_width, bg_height)
+	self.foreground:size(bg_width, bg_height)
 
 	self.jobicon:pos(x + theme_options.jobicon_posx , y + theme_options.jobicon_posy)
 	self.jobicon:alpha(theme_options.jobicon_alpha)
@@ -141,8 +143,6 @@ function ui:position(theme_options)
 	self.mp_text:pos(x + theme_options.mp_text_posx, self.background:pos_y() + theme_options.mp_text_posy)
 	self.tp_text:pos(x + theme_options.tp_text_posx, self.background:pos_y() + theme_options.tp_text_posy)
 
-	self.dead:pos(-2500 + (windower.get_windower_settings().x_res/2), windower.get_windower_settings().y_res /2 -300)
-	self.dead:hide()
 end
 
 -- hide ui

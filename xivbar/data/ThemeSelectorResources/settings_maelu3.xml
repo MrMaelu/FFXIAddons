@@ -2,7 +2,7 @@
 <settings>
     <global>
         <Bars>
-            <OffsetX>-150</OffsetX>
+            <OffsetX>0</OffsetX>
             <OffsetY>-310</OffsetY>
         </Bars>
         <Texts>
@@ -27,20 +27,12 @@
                 <Red>0</Red>
                 <Width>2</Width>
             </Stroke>
+            <prefix>false</prefix>
         </Texts>
         <Theme>
             <Bar>
-                <Height>0</Height>
-                <Offset>0</Offset>
-                <Spacing>0</Spacing>
-                <Width>418</Width>
                 <alphamax>150</alphamax>
                 <alphamin>100</alphamin>
-                <compact>
-                    <offset>0</offset>
-                    <spacing>0</spacing>
-                    <width>0</width>
-                </compact>
                 <hp>
                     <height>44</height>
                     <posx>2</posx>
@@ -83,19 +75,19 @@
             <bgalpha>180</bgalpha>
             <compact>true</compact>
             <fgalpha>180</fgalpha>
-            <height>81</height>
+            <height>65</height>
+            <jisx>0</jisx>
+            <jisy>0</jisy>
             <jobiconalpha>150</jobiconalpha>
             <jobiconposx>-80</jobiconposx>
             <jobiconposy>0</jobiconposy>
+            <scale>100</scale>
             <weaponiconalpha>150</weaponiconalpha>
             <weaponiconposx>650</weaponiconposx>
             <weaponiconposy>0</weaponiconposy>
-            <width>418</width>
+            <width>570</width>
+            <wisx>0</wisx>
+            <wisy>0</wisy>
         </Theme>
     </global>
-    <maelu>
-        <Bars>
-            <OffsetX>-50</OffsetX>
-        </Bars>
-    </maelu>
 </settings>

@@ -57,6 +57,10 @@ local player = require('player')
 local xivbar = require('variables')
 
 -- Import variables
+local scalefactor = settings.Theme.scale
+local width = theme_options.total_width*scalefactor/100
+local height = theme_options.total_height*scalefactor/100
+
 local hp_bar_width = theme_options.hp_bar_width
 local hp_bar_height = theme_options.hp_bar_height
 
@@ -90,7 +94,7 @@ function initialize()
 		player.job = windower.ffxi.get_player().main_job_id
         player:calculate_tpp()
     end
-
+	scale(settings.Theme.scale)
     xivbar.initialized = true
 end
 
@@ -107,7 +111,7 @@ function update_bar(bar, text, width, current, pp, flag)
 	end
 
     if new_width ~= nil and new_width >= 0 then
-        if old_width == new_width then
+        if (old_width == new_width and flag >= 3) then
             if new_width == 0 then
                 bar:hide()
             end
@@ -116,7 +120,7 @@ function update_bar(bar, text, width, current, pp, flag)
             local x = old_width
 
             if old_width < new_width then
-                x = old_width + math.ceil((new_width - old_width) * 0.1)
+                x = old_width + math.ceil((new_width - old_width) * 0.05)
 				if flag == 1 then
                 x = math.min(x, hp_bar_width)
 				elseif flag == 2 then
@@ -125,13 +129,12 @@ function update_bar(bar, text, width, current, pp, flag)
 				x = math.min(x, tp_bar1_width)
 				end
             elseif old_width > new_width then
-                x = old_width - math.ceil((old_width - new_width) * 0.1)
+                x = old_width - math.ceil((old_width - new_width) * 0.05)
 
                 x = math.max(x, 0)
             end
 
             if flag == 1 then
-				--xivbar.update_hp = false
                 xivbar.hp_bar_width = x
 				bar:size(x, hp_bar_height)
 				if x == hp_bar_width then
@@ -141,7 +144,6 @@ function update_bar(bar, text, width, current, pp, flag)
 				end
 				bar:show()
             elseif flag == 2 then
-				--xivbar.update_mp = false
                 xivbar.mp_bar_width = x
 				bar:size(x, mp_bar_height)
 				if x == mp_bar_width then
@@ -150,8 +152,7 @@ function update_bar(bar, text, width, current, pp, flag)
 					bar:alpha(theme_options.bar_alphaMin)
 				end
 				bar:show()
-            elseif flag == 5 then
-				--xivbar.update_tp = false
+            elseif (flag == 5 and current >=2000) then
 				xivbar.tp_bar1_width = tp_bar1_width
 				xivbar.tp_bar2_width = tp_bar2_width
 				xivbar.tp_bar3_width = x
@@ -163,8 +164,7 @@ function update_bar(bar, text, width, current, pp, flag)
 				ui.tp_bar1:show()
 				ui.tp_bar2:show()
 				ui.tp_bar3:show()				
-			elseif flag == 4 then
-				--xivbar.update_tp = false
+			elseif (flag == 4 and current >=1000) then
 				xivbar.tp_bar1_width = tp_bar1_width
 				xivbar.tp_bar2_width = x
 				xivbar.tp_bar3_width = 0
@@ -175,9 +175,8 @@ function update_bar(bar, text, width, current, pp, flag)
 				
 				ui.tp_bar1:show()
 				ui.tp_bar2:show()
-				ui.tp_bar3:hide()
-			elseif flag == 3 then
-				--xivbar.update_tp = false
+				ui.tp_bar3:show()
+			elseif (flag == 3 and current < 1000) then
 				xivbar.tp_bar1_width = x
 				xivbar.tp_bar2_width = 0
 				xivbar.tp_bar3_width = 0
@@ -187,8 +186,8 @@ function update_bar(bar, text, width, current, pp, flag)
 				ui.tp_bar3:size(0, tp_bar_height)
 				
 				ui.tp_bar1:show()
-				ui.tp_bar2:hide()
-				ui.tp_bar3:hide()
+				ui.tp_bar2:show()
+				ui.tp_bar3:show()
             end
 		
         end
@@ -227,7 +226,6 @@ else
 end
 
 text:text(prefix .. tostring(current))
-text:alpha(theme_options.font_alpha)
 
 end
 
@@ -238,9 +236,9 @@ function update_job(job)
 	theme_options.bar_jobicon = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/' .. job .. '.png'
 	initialize()
 	ui:show()
-	ui.tp_bar1:hide()
-	ui.tp_bar2:hide()
-	ui.tp_bar3:hide()
+--	ui.tp_bar1:hide()
+--	ui.tp_bar2:hide()
+--	ui.tp_bar3:hide()
 end
 
 -- hide the addon
@@ -254,8 +252,8 @@ function show()
     if xivbar.initialized == false then
         initialize()
     end
-
     ui:show()
+
     xivbar.ready = true
     xivbar.update_hp = true
     xivbar.update_mp = true
@@ -267,8 +265,13 @@ end
 -- ON LOAD
 windower.register_event('load', function()
     if windower.ffxi.get_info().logged_in then
-        initialize()
         show()
+		local equip = windower.ffxi.get_items('equipment')
+        info.main_weapon = equip.main
+        info.main_bag = equip.main_bag
+        info.range = equip.range
+        info.range_bag = equip.range_bag
+        update_weapon()
     end
 end)
 
@@ -335,9 +338,9 @@ windower.register_event('prerender', function()
     end
 
     if xivbar.update_tp then
-		update_bar(ui.tp_bar1, ui.tp_text, xivbar.tp_bar1_width, player.current_tp, player.tpp1, 3)
-		update_bar(ui.tp_bar2, ui.tp_text, xivbar.tp_bar2_width, player.current_tp, player.tpp2, 4)
-		update_bar(ui.tp_bar3, ui.tp_text, xivbar.tp_bar3_width, player.current_tp, player.tpp3, 5)
+		if player.current_tp <= 1000 then update_bar(ui.tp_bar1, ui.tp_text, xivbar.tp_bar1_width, player.current_tp, player.tpp1, 3) end
+		if player.current_tp <= 2000 then update_bar(ui.tp_bar2, ui.tp_text, xivbar.tp_bar2_width, player.current_tp, player.tpp2, 4) end
+		if player.current_tp <= 3000 then update_bar(ui.tp_bar3, ui.tp_text, xivbar.tp_bar3_width, player.current_tp, player.tpp3, 5) end
     end
 
 	if xivbar.update_job then
@@ -354,9 +357,6 @@ windower.register_event('status change', function(new_status_id)
         xivbar.hide_bars = false
         show()
 	end
-	if new_status_id == 2 then
-		ui.dead:show()
-    end
 end)
 
 -- weapon check
@@ -391,16 +391,66 @@ function update_weapon()
     end
 end
 
-windower.register_event('load', function()
-    if windower.ffxi.get_info().logged_in then
-        local equip = windower.ffxi.get_items('equipment')
-        info.main_weapon = equip.main
-        info.main_bag = equip.main_bag
-        info.range = equip.range
-        info.range_bag = equip.range_bag
-        update_weapon()
-    end
-end)
+function copy(infile, outfile)
+	local readf = io.open(infile)
+	local readfile = readf:read("*a")
+	readf:close()
+	local savefile = io.open(outfile, "w")
+	savefile:write(readfile)
+	savefile:close()
+end
+
+function scale(factor)
+	width = math.floor(settings.Theme.width * factor/100)
+	height = math.floor(settings.Theme.height * factor/100)
+
+	local x = windower.get_windower_settings().x_res / 2 - (width / 2) + theme_options.offset_x
+	local y = windower.get_windower_settings().y_res + theme_options.offset_y
+
+	ui.background:size(width, height)
+	ui.foreground:size(width, height)
+	ui.hp_shade:size(width, height)
+	ui.background:pos(x,y)
+	ui.foreground:pos(x,y)
+	ui.hp_shade:pos(x,y)
+
+	jisx = math.floor(settings.Theme.jisx * factor/100)
+	jisy = math.floor(settings.Theme.jisy * factor/100)
+	wisx = math.floor(settings.Theme.wisx * factor/100)
+	wisy = math.floor(settings.Theme.wisy * factor/100)
+
+	ui.jobicon:size(jisx, jisy)
+	ui.weaponicon:size(wisx, wisy)
+
+	local textsize = (math.floor(settings.Texts.Size * factor/100))
+
+	ui.hp_text:size(textsize)
+	ui.mp_text:size(textsize)
+	ui.tp_text:size(textsize)
+
+	hp_bar_width = math.floor(theme_options.hp_bar_width * factor/100)
+	hp_bar_height = math.floor(theme_options.hp_bar_height * factor/100)
+	mp_bar_width = math.floor(theme_options.mp_bar_width * factor/100)
+	mp_bar_height = math.floor(theme_options.mp_bar_height * factor/100)
+	tp_bar1_width = math.floor(theme_options.tp_bar1_width * factor/100)
+	tp_bar2_width = math.floor(theme_options.tp_bar2_width * factor/100)
+	tp_bar3_width = math.floor(theme_options.tp_bar3_width * factor/100)
+	tp_bar_height = math.floor(theme_options.tp_bar_height * factor/100)
+
+	ui.jobicon:pos(math.floor(x + (theme_options.jobicon_posx * factor/100)), math.floor(y + (theme_options.jobicon_posy * factor/100)))
+	ui.weaponicon:pos(math.floor(x + (theme_options.weaponicon_posx * factor/100)), math.floor(y + (theme_options.weaponicon_posy * factor/100)))
+	
+	ui.hp_bar:pos(math.floor(x + (theme_options.hp_bar_posx * factor/100)), math.floor(y + (theme_options.hp_bar_posy * factor/100)))
+	ui.mp_bar:pos(math.floor(x + (theme_options.mp_bar_posx * factor/100)), math.floor(y + (theme_options.mp_bar_posy * factor/100)))
+	ui.tp_bar1:pos(math.floor(x + (theme_options.tp_bar1_posx * factor/100)), math.floor(y + (theme_options.tp_bar1_posy * factor/100)))
+	ui.tp_bar2:pos(math.floor(x + (theme_options.tp_bar2_posx * factor/100)), math.floor(y + (theme_options.tp_bar2_posy * factor/100)))
+	ui.tp_bar3:pos(math.floor(x + (theme_options.tp_bar3_posx * factor/100)), math.floor(y + (theme_options.tp_bar3_posy * factor/100)))
+	
+	ui.hp_text:pos(math.floor(x + (theme_options.hp_text_posx * factor/100)), math.floor(ui.background:pos_y() + (theme_options.hp_text_posy * factor/100)))
+	ui.mp_text:pos(math.floor(x + (theme_options.mp_text_posx * factor/100)), math.floor(ui.background:pos_y() + (theme_options.mp_text_posy * factor/100)))
+	ui.tp_text:pos(math.floor(x + (theme_options.tp_text_posx * factor/100)), math.floor(ui.background:pos_y() + (theme_options.tp_text_posy * factor/100)))
+
+end
 
 windower.register_event('addon command', function(...)
     local args = {...}
@@ -431,7 +481,7 @@ windower.register_event('addon command', function(...)
 		if io.open(resourcefolder .. "settings_" .. args[2] ..".xml") ~= nil then
 			copy(resourcefolder .. "settings_" .. args[2] ..".xml", settingsfolder .. "settings.xml")
 			windower.add_to_chat(8, 'Theme ' .. args[2] .. ' loaded.')
-			windower.send_command("lua r xivbar")			
+			windower.send_command("lua r xivbar")
 		else
 			windower.add_to_chat(8, 'No theme with that name found.')
 		end
@@ -453,17 +503,13 @@ windower.register_event('addon command', function(...)
 		windower.add_to_chat(8, '"xivbar x <number>" will move the bar right with positive and left with negative numbers.')
 		windower.add_to_chat(8, '"xivbar y <number>" will move the bar down with positive and up with negative numbers.')
 		windower.add_to_chat(8, '"xivbar center" will center the bar on your screen')
-		windower.add_to_chat(8, '"xivbar reset" will reset the current theme to their default settings and reload the addon.')
+		windower.add_to_chat(8, '"xivbar scale <number>" will resize the bar by the percentage given, relative to it\'s default size.')
+		windower.add_to_chat(8, '"xivbar reset" will reset the current theme to it\'s default settings and reload the addon.')
 		windower.add_to_chat(8, '"xivbar save" will save the settings to the theme settings file.')
 		windower.add_to_chat(8, 'If you do not save the settings will be returned to their defaults when you change themes.')
+	elseif (args[1] == 'scale' and tonumber(args[2]) ~= nil) then
+		settings.Theme.scale = tonumber(args[2])
+		config.save(settings)
+		scale(settings.Theme.scale)
 	end
 end)
-
-function copy(infile, outfile)
-	local readf = io.open(infile)
-	local readfile = readf:read("*a")
-	readf:close()
-	local savefile = io.open(outfile, "w")
-	savefile:write(readfile)
-	savefile:close()
-end

@@ -30,14 +30,6 @@
         </Texts>
         <Theme>
             <Bar>
-                <Compact>
-                    <Offset>0</Offset>
-                    <Spacing>0</Spacing>
-                    <Width>0</Width>
-                </Compact>
-                <Offset>0</Offset>
-                <Spacing>0</Spacing>
-                <Width>418</Width>
                 <alphamax>150</alphamax>
                 <alphamin>100</alphamin>
                 <hp>
@@ -77,19 +69,24 @@
                     <texty>-29</texty>
                 </tp>
             </Bar>
-            <Compact>true</Compact>
             <DimTpBar>true</DimTpBar>
             <Name>maelu2</Name>
             <bgalpha>180</bgalpha>
-            <fgalpha>180</fgalpha>
+            <compact>true</compact>
+            <fgalpha>0</fgalpha>
             <height>81</height>
+            <jisx>90</jisx>
+            <jisy>90</jisy>
             <jobiconalpha>180</jobiconalpha>
             <jobiconposx>-80</jobiconposx>
             <jobiconposy>0</jobiconposy>
+            <scale>100</scale>
             <weaponiconalpha>180</weaponiconalpha>
-            <weaponiconposx>650</weaponiconposx>
+            <weaponiconposx>625</weaponiconposx>
             <weaponiconposy>0</weaponiconposy>
-            <width>418</width>
+            <width>642</width>
+            <wisx>90</wisx>
+            <wisy>90</wisy>
         </Theme>
     </global>
 </settings>

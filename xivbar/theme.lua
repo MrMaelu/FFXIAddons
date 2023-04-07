@@ -30,21 +30,63 @@ local theme = {}
 
 theme.apply = function (settings)
     local options = {}
-
-    options.total_height = settings.Theme.height
+	options.scale = settings.Theme.scale
+    
+	options.total_height = settings.Theme.height
     options.total_width = settings.Theme.width
     options.offset_x = settings.Bars.OffsetX
     options.offset_y = settings.Bars.OffsetY
 
-	options.bar_background = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/bar_bg.png'
-    options.bar_foreground = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/bar_fg.png'
-    options.bar_hp = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/hp_fg.png'
-	options.bar_hp_shade = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/hp_shade.png'
-    options.bar_mp = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/mp_fg.png'
-    options.bar_tp1 = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/tp1_fg.png'
-	options.bar_tp2 = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/tp2_fg.png'
-	options.bar_tp3 = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/tp3_fg.png'
-	options.deathmessage = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/dead.png'
+	local themepath = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/'
+	local defaultpath = windower.addon_path .. 'data/defaults/'
+
+	if io.open(themepath .. 'bar_bg.png') ~= nil then
+		options.bar_background = themepath .. 'bar_bg.png'
+	else
+		options.bar_background = defaultpath .. 'bar_bg.png'
+	end
+
+	if io.open(themepath .. 'bar_fg.png') ~= nil then
+		options.bar_foreground = themepath .. 'bar_fg.png'
+	else
+		options.bar_foreground = defaultpath .. 'bar_fg.png'
+	end
+	
+	if io.open(themepath .. 'hp_fg.png') ~= nil then
+		options.bar_hp = themepath .. 'hp_fg.png'
+	else
+		options.bar_hp = defaultpath .. 'hp_fg.png'
+	end
+	
+	if io.open(themepath .. 'hp_shade.png') ~= nil then
+		options.bar_hp_shade = themepath .. 'hp_shade.png'
+    else
+		options.bar_hp_shade = defaultpath .. 'hp_shade.png'
+	end
+	
+	if io.open(themepath .. 'mp_fg.png') ~= nil then
+		options.bar_mp = themepath .. 'mp_fg.png'
+	else
+		options.bar_mp = defaultpath .. 'mp_fg.png'
+	end
+	
+	if io.open(themepath .. 'tp1_fg.png') ~= nil then
+		options.bar_tp1 = themepath .. 'tp1_fg.png'
+	else
+		options.bar_tp1 = defaultpath .. 'tp1_fg.png'
+	end
+
+	if io.open(themepath .. 'tp2_fg.png') ~= nil then
+		options.bar_tp2 = themepath .. 'tp2_fg.png'
+	else
+		options.bar_tp2 = defaultpath .. 'tp2_fg.png'
+	end
+
+	if io.open(themepath .. 'tp3_fg.png') ~= nil then
+		options.bar_tp3 = themepath .. 'tp3_fg.png'
+	else
+		options.bar_tp3 = defaultpath .. 'tp3_fg.png'
+	end
 
     options.font = settings.Texts.Font
     options.font_size = settings.Texts.Size
@@ -77,9 +119,6 @@ theme.apply = function (settings)
 	options.tp_bar3_width = settings.Theme.Bar.tp.c.width
 	options.tp_bar_height = settings.Theme.Bar.tp.height
 
-    options.bar_spacing = settings.Theme.Bar.Spacing
-    options.bar_offset = settings.Theme.Bar.Offset
-
     options.dim_tp_bar = settings.Theme.DimTpBar
 
 	options.bgalpha = settings.Theme.bgalpha
@@ -88,10 +127,14 @@ theme.apply = function (settings)
 	options.jobicon_posx = settings.Theme.jobiconposx
 	options.jobicon_posy = settings.Theme.jobiconposy
 	options.jobicon_alpha = settings.Theme.jobiconalpha
+	options.jisx = settings.Theme.jisx
+	options.jisy = settings.Theme.jisy
 
 	options.weaponicon_posx = settings.Theme.weaponiconposx
 	options.weaponicon_posy = settings.Theme.weaponiconposy
 	options.weaponicon_alpha = settings.Theme.weaponiconalpha
+	options.wisx = settings.Theme.wisx
+	options.wisy = settings.Theme.wisy
 
     options.hp_bar_posx = settings.Theme.Bar.hp.posx
 	options.hp_bar_posy = settings.Theme.Bar.hp.posy
@@ -114,7 +157,7 @@ theme.apply = function (settings)
 	options.mp_text_posy = settings.Theme.Bar.mp.texty
 	options.tp_text_posx = settings.Theme.Bar.tp.textx
 	options.tp_text_posy = settings.Theme.Bar.tp.texty
-	
+
     return options
 end
 
