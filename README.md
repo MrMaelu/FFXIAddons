@@ -1,5 +1,5 @@
 # Modded XIVBAR by MrMaelu
-### NOTE: This version is heavily modified compared to the original.
+### NOTE: This version is heavily modified compared to the original by SirEdeonX.
 
 ## New features:
 1. Dynamic job and weapon icons.
@@ -20,27 +20,21 @@ https://user-images.githubusercontent.com/12958339/228619252-bd97cb6a-1218-4866-
 https://user-images.githubusercontent.com/12958339/228695809-7abfd144-df69-4a56-92d3-357560656710.mp4
 #### This is also available as a separate addon.
 
-
 ## Removed features:
 1. Compact mode
 2. SirEdeonX themes
 
 ### In-game console options:
-* "xivbar help" shows these options
 * "xivbar theme <themename>" will change theme, if the requested theme exists.
-* "xivbar pos <number> <number>" will move the to the specified position.
+* "xivbar pos <number> <number>" will place the bar at the specified position.
 * "xivbar x <number>" will move the bar right with positive and left with negative numbers.
 * "xivbar y <number>" will move the bar down with positive and up with negative numbers.
-* "xivbar center" will place the bar in the center of your screen.
-* "xivbar reset" will reset the current theme to their default settings.
+* "xivbar center" will center the bar on your screen
+* "xivbar scale <number>" will resize the bar by the percentage given, relative to it's default size.
+* "xivbar reset" will reset the current theme to it's default settings and reload the addon.
 * "xivbar save" will save the settings to the theme settings file.
 
 If you do not save the settings will be returned to their defaults when you change themes.
-
-----------------------------------------------------------------------------------------
-
-# xivbar
-This addon displays vital bars for easy tracking
 
 ## Available Settings
 #### Bars
