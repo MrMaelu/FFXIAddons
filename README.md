@@ -18,7 +18,7 @@ https://user-images.githubusercontent.com/12958339/228619252-bd97cb6a-1218-4866-
 
 ## Elden Ring death message
 https://user-images.githubusercontent.com/12958339/228695809-7abfd144-df69-4a56-92d3-357560656710.mp4
-#### This is also available as a separate addon.
+#### This is now only available as a separate addon.
 
 ## Removed features:
 1. Compact mode
