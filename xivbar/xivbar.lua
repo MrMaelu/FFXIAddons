@@ -30,10 +30,10 @@
 
 -- Addon description
 _addon.name = 'XIV Bar'
-_addon.author = 'Edeon'
-_addon.version = '1.0'
+_addon.author = 'Edeon (modded by MrMaelu)'
+_addon.version = '2.0'
 _addon.language = 'english'
-_addon.commands = {'xivbar'}
+_addon.commands = {'xivbar', 'xb'}
 
 -- Libs
 config = require('config')
@@ -106,8 +106,12 @@ function update_bar(bar, text, width, current, pp, flag)
 		new_width = math.floor((pp / 100) * hp_bar_width)
 	elseif flag == 2 then
 		new_width = math.floor((pp / 100) * mp_bar_width)
-	elseif flag >= 3 then
+	elseif flag == 3 then
 		new_width = math.floor((pp / 100) * tp_bar1_width)
+	elseif flag == 4 then
+		new_width = math.floor((pp / 100) * tp_bar2_width)
+	elseif flag == 5 then
+		new_width = math.floor((pp / 100) * tp_bar3_width)
 	end
 
     if new_width ~= nil and new_width >= 0 then
