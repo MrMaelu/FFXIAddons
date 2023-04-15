@@ -97,4 +97,9 @@
             <wisy>120</wisy>
         </Theme>
     </global>
+    <maelu>
+        <Theme>
+            <scale>80</scale>
+        </Theme>
+    </maelu>
 </settings>

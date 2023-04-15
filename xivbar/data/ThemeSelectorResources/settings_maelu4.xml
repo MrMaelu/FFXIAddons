@@ -99,6 +99,9 @@
         </Theme>
     </global>
     <maelu>
+        <Bars>
+            <OffsetY>-149.5</OffsetY>
+        </Bars>
         <Theme>
             <scale>75</scale>
         </Theme>

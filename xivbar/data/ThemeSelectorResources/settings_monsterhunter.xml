@@ -84,11 +84,11 @@
             <compact>false</compact>
             <fgalpha>180</fgalpha>
             <height>116</height>
-            <jisx>50</jisx>
-            <jisy>50</jisy>
+            <jisx>40</jisx>
+            <jisy>40</jisy>
             <jobiconalpha>180</jobiconalpha>
-            <jobiconposx>35</jobiconposx>
-            <jobiconposy>30</jobiconposy>
+            <jobiconposx>40</jobiconposx>
+            <jobiconposy>35</jobiconposy>
             <scale>100</scale>
             <weaponiconalpha>0</weaponiconalpha>
             <weaponiconposx>0</weaponiconposx>
@@ -98,4 +98,13 @@
             <wisy>0</wisy>
         </Theme>
     </global>
+    <maelu>
+        <Bars>
+            <OffsetX>0</OffsetX>
+            <OffsetY>-202</OffsetY>
+        </Bars>
+        <Theme>
+            <scale>150</scale>
+        </Theme>
+    </maelu>
 </settings>

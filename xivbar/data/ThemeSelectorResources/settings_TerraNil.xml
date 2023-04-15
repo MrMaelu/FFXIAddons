@@ -98,4 +98,12 @@
             <wisy>150</wisy>
         </Theme>
     </global>
+    <maelu>
+        <Bars>
+            <OffsetY>-160</OffsetY>
+        </Bars>
+        <Theme>
+            <scale>70</scale>
+        </Theme>
+    </maelu>
 </settings>

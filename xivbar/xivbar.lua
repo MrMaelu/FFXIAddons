@@ -31,7 +31,7 @@
 -- Addon description
 _addon.name = 'XIV Bar'
 _addon.author = 'Edeon (modded by MrMaelu)'
-_addon.version = '2.0'
+_addon.version = '2.0.1'
 _addon.language = 'english'
 _addon.commands = {'xivbar', 'xb'}
 
@@ -58,8 +58,8 @@ local xivbar = require('variables')
 
 -- Import variables
 local scalefactor = settings.Theme.scale
-local width = theme_options.total_width*scalefactor/100
-local height = theme_options.total_height*scalefactor/100
+local width = theme_options.total_width*scalefactor
+local height = theme_options.total_height*scalefactor
 
 local hp_bar_width = theme_options.hp_bar_width
 local hp_bar_height = theme_options.hp_bar_height
@@ -281,7 +281,8 @@ end)
 
 -- ON LOGIN
 windower.register_event('login', function()
-    show()
+    theme_options = theme.apply(settings)
+	show()
 end)
 
 -- ON LOGOUT
@@ -395,18 +396,31 @@ function update_weapon()
     end
 end
 
-function copy(infile, outfile)
-	local readf = io.open(infile)
-	local readfile = readf:read("*a")
-	readf:close()
-	local savefile = io.open(outfile, "w")
-	savefile:write(readfile)
-	savefile:close()
+function copy(old_path, new_path)
+  local old_file = io.open(old_path, "rb")
+  local new_file = io.open(new_path, "wb")
+  local old_file_sz, new_file_sz = 0, 0
+  if not old_file or not new_file then
+    return false
+  end
+  while true do
+    local block = old_file:read(2^13)
+    if not block then 
+      old_file_sz = old_file:seek( "end" )
+      break
+    end
+    new_file:write(block)
+  end
+  old_file:close()
+  new_file_sz = new_file:seek( "end" )
+  new_file:close()
+  return new_file_sz == old_file_sz
 end
 
-function scale(factor)
-	width = math.floor(settings.Theme.width * factor/100)
-	height = math.floor(settings.Theme.height * factor/100)
+function scale(percent)
+	factor = percent/100
+	width = math.floor(settings.Theme.width * factor)
+	height = math.floor(settings.Theme.height * factor)
 
 	local x = windower.get_windower_settings().x_res / 2 - (width / 2) + theme_options.offset_x
 	local y = windower.get_windower_settings().y_res + theme_options.offset_y
@@ -418,41 +432,41 @@ function scale(factor)
 	ui.foreground:pos(x,y)
 	ui.hp_shade:pos(x,y)
 
-	jisx = math.floor(settings.Theme.jisx * factor/100)
-	jisy = math.floor(settings.Theme.jisy * factor/100)
-	wisx = math.floor(settings.Theme.wisx * factor/100)
-	wisy = math.floor(settings.Theme.wisy * factor/100)
+	jisx = math.floor(settings.Theme.jisx * factor)
+	jisy = math.floor(settings.Theme.jisy * factor)
+	wisx = math.floor(settings.Theme.wisx * factor)
+	wisy = math.floor(settings.Theme.wisy * factor)
 
 	ui.jobicon:size(jisx, jisy)
 	ui.weaponicon:size(wisx, wisy)
 
-	local textsize = (math.floor(settings.Texts.Size * factor/100))
+	local textsize = (math.floor(settings.Texts.Size * factor))
 
 	ui.hp_text:size(textsize)
 	ui.mp_text:size(textsize)
 	ui.tp_text:size(textsize)
 
-	hp_bar_width = math.floor(theme_options.hp_bar_width * factor/100)
-	hp_bar_height = math.floor(theme_options.hp_bar_height * factor/100)
-	mp_bar_width = math.floor(theme_options.mp_bar_width * factor/100)
-	mp_bar_height = math.floor(theme_options.mp_bar_height * factor/100)
-	tp_bar1_width = math.floor(theme_options.tp_bar1_width * factor/100)
-	tp_bar2_width = math.floor(theme_options.tp_bar2_width * factor/100)
-	tp_bar3_width = math.floor(theme_options.tp_bar3_width * factor/100)
-	tp_bar_height = math.floor(theme_options.tp_bar_height * factor/100)
+	hp_bar_width = math.floor(theme_options.hp_bar_width * factor)
+	hp_bar_height = math.floor(theme_options.hp_bar_height * factor)
+	mp_bar_width = math.floor(theme_options.mp_bar_width * factor)
+	mp_bar_height = math.floor(theme_options.mp_bar_height * factor)
+	tp_bar1_width = math.floor(theme_options.tp_bar1_width * factor)
+	tp_bar2_width = math.floor(theme_options.tp_bar2_width * factor)
+	tp_bar3_width = math.floor(theme_options.tp_bar3_width * factor)
+	tp_bar_height = math.floor(theme_options.tp_bar_height * factor)
 
-	ui.jobicon:pos(math.floor(x + (theme_options.jobicon_posx * factor/100)), math.floor(y + (theme_options.jobicon_posy * factor/100)))
-	ui.weaponicon:pos(math.floor(x + (theme_options.weaponicon_posx * factor/100)), math.floor(y + (theme_options.weaponicon_posy * factor/100)))
+	ui.jobicon:pos(math.floor(x + (theme_options.jobicon_posx * factor)), math.floor(y + (theme_options.jobicon_posy * factor)))
+	ui.weaponicon:pos(math.floor(x + (theme_options.weaponicon_posx * factor)), math.floor(y + (theme_options.weaponicon_posy * factor)))
 	
-	ui.hp_bar:pos(math.floor(x + (theme_options.hp_bar_posx * factor/100)), math.floor(y + (theme_options.hp_bar_posy * factor/100)))
-	ui.mp_bar:pos(math.floor(x + (theme_options.mp_bar_posx * factor/100)), math.floor(y + (theme_options.mp_bar_posy * factor/100)))
-	ui.tp_bar1:pos(math.floor(x + (theme_options.tp_bar1_posx * factor/100)), math.floor(y + (theme_options.tp_bar1_posy * factor/100)))
-	ui.tp_bar2:pos(math.floor(x + (theme_options.tp_bar2_posx * factor/100)), math.floor(y + (theme_options.tp_bar2_posy * factor/100)))
-	ui.tp_bar3:pos(math.floor(x + (theme_options.tp_bar3_posx * factor/100)), math.floor(y + (theme_options.tp_bar3_posy * factor/100)))
+	ui.hp_bar:pos(math.floor(x + (theme_options.hp_bar_posx * factor)), math.floor(y + (theme_options.hp_bar_posy * factor)))
+	ui.mp_bar:pos(math.floor(x + (theme_options.mp_bar_posx * factor)), math.floor(y + (theme_options.mp_bar_posy * factor)))
+	ui.tp_bar1:pos(math.floor(x + (theme_options.tp_bar1_posx * factor)), math.floor(y + (theme_options.tp_bar1_posy * factor)))
+	ui.tp_bar2:pos(math.floor(x + (theme_options.tp_bar2_posx * factor)), math.floor(y + (theme_options.tp_bar2_posy * factor)))
+	ui.tp_bar3:pos(math.floor(x + (theme_options.tp_bar3_posx * factor)), math.floor(y + (theme_options.tp_bar3_posy * factor)))
 	
-	ui.hp_text:pos(math.floor(x + (theme_options.hp_text_posx * factor/100)), math.floor(ui.background:pos_y() + (theme_options.hp_text_posy * factor/100)))
-	ui.mp_text:pos(math.floor(x + (theme_options.mp_text_posx * factor/100)), math.floor(ui.background:pos_y() + (theme_options.mp_text_posy * factor/100)))
-	ui.tp_text:pos(math.floor(x + (theme_options.tp_text_posx * factor/100)), math.floor(ui.background:pos_y() + (theme_options.tp_text_posy * factor/100)))
+	ui.hp_text:pos(math.floor(x + (theme_options.hp_text_posx * factor)), math.floor(ui.background:pos_y() + (theme_options.hp_text_posy * factor)))
+	ui.mp_text:pos(math.floor(x + (theme_options.mp_text_posx * factor)), math.floor(ui.background:pos_y() + (theme_options.mp_text_posy * factor)))
+	ui.tp_text:pos(math.floor(x + (theme_options.tp_text_posx * factor)), math.floor(ui.background:pos_y() + (theme_options.tp_text_posy * factor)))
 
 end
 
@@ -515,5 +529,8 @@ windower.register_event('addon command', function(...)
 		settings.Theme.scale = tonumber(args[2])
 		config.save(settings)
 		scale(settings.Theme.scale)
+	elseif (args[1] == 'winstyle' and tonumber(args[2]) ~= nil and tonumber(args[2]) <= 8) then
+		copy(windower.addon_path .. 'themes/ffxi/bar_bg_style' .. tonumber(args[2]) .. '.png', windower.addon_path .. 'themes/ffxi/bar_bg.png')
+		initialize()
 	end
 end)
