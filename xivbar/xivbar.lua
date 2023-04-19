@@ -31,7 +31,7 @@
 -- Addon description
 _addon.name = 'XIV Bar'
 _addon.author = 'Edeon (modded by MrMaelu)'
-_addon.version = '2.0.1'
+_addon.version = '2.1.0'
 _addon.language = 'english'
 _addon.commands = {'xivbar', 'xb'}
 
@@ -114,88 +114,71 @@ function update_bar(bar, text, width, current, pp, flag)
 		new_width = math.floor((pp / 100) * tp_bar3_width)
 	end
 
-    if new_width ~= nil and new_width >= 0 then
-        if (old_width == new_width and flag >= 3) then
-            if new_width == 0 then
-                bar:hide()
-            end
-			
-        else
-            local x = old_width
-
-            if old_width < new_width then
-                x = old_width + math.ceil((new_width - old_width) * 0.05)
-				if flag == 1 then
-                x = math.min(x, hp_bar_width)
-				elseif flag == 2 then
-				x = math.min(x, mp_bar_width)
-				elseif flag >= 3 then
-				x = math.min(x, tp_bar1_width)
-				end
-            elseif old_width > new_width then
-                x = old_width - math.ceil((old_width - new_width) * 0.05)
-
-                x = math.max(x, 0)
-            end
-
-            if flag == 1 then
-                xivbar.hp_bar_width = x
-				bar:size(x, hp_bar_height)
-				if x == hp_bar_width then
-					bar:alpha(theme_options.bar_alphaMax)
-				else
-					bar:alpha(theme_options.bar_alphaMin)
-				end
-				bar:show()
-            elseif flag == 2 then
-                xivbar.mp_bar_width = x
-				bar:size(x, mp_bar_height)
-				if x == mp_bar_width then
-					bar:alpha(theme_options.bar_alphaMax)
-				else
-					bar:alpha(theme_options.bar_alphaMin)
-				end
-				bar:show()
-            elseif (flag == 5 and current >=2000) then
-				xivbar.tp_bar1_width = tp_bar1_width
-				xivbar.tp_bar2_width = tp_bar2_width
-				xivbar.tp_bar3_width = x
-
-				ui.tp_bar1:size(tp_bar1_width, tp_bar_height)
-				ui.tp_bar2:size(tp_bar2_width, tp_bar_height)
-				ui.tp_bar3:size(x, tp_bar_height)
-				
-				ui.tp_bar1:show()
-				ui.tp_bar2:show()
-				ui.tp_bar3:show()				
-			elseif (flag == 4 and current >=1000) then
-				xivbar.tp_bar1_width = tp_bar1_width
-				xivbar.tp_bar2_width = x
-				xivbar.tp_bar3_width = 0
-				
-				ui.tp_bar1:size(tp_bar1_width, tp_bar_height)
-				ui.tp_bar2:size(x, tp_bar_height)
-				ui.tp_bar3:size(0, tp_bar_height)
-				
-				ui.tp_bar1:show()
-				ui.tp_bar2:show()
-				ui.tp_bar3:show()
-			elseif (flag == 3 and current < 1000) then
-				xivbar.tp_bar1_width = x
-				xivbar.tp_bar2_width = 0
-				xivbar.tp_bar3_width = 0
-				
-				ui.tp_bar1:size(x, tp_bar_height)
-				ui.tp_bar2:size(0, tp_bar_height)
-				ui.tp_bar3:size(0, tp_bar_height)
-				
-				ui.tp_bar1:show()
-				ui.tp_bar2:show()
-				ui.tp_bar3:show()
-            end
-		
+	if new_width ~= nil then
+		local x = old_width
+        if old_width < new_width then
+            x = old_width + math.ceil((new_width - old_width) * 0.1)
+			if flag == 1 then
+            x = math.min(x, hp_bar_width)
+			elseif flag == 2 then
+			x = math.min(x, mp_bar_width)
+			elseif flag >= 3 then
+			x = math.min(x, tp_bar1_width)
+			end
+        elseif old_width > new_width then
+            x = old_width - math.ceil((old_width - new_width) * 0.1)
+            x = math.max(x, 0)
         end
-    end
+        if flag == 1 then
+            xivbar.hp_bar_width = x
+			bar:size(x, hp_bar_height)
+			if x == hp_bar_width then
+				bar:alpha(theme_options.bar_alphaMax)
+			else
+				bar:alpha(theme_options.bar_alphaMin)
+			end
+			bar:show()
+        elseif flag == 2 then
+            xivbar.mp_bar_width = x
+			bar:size(x, mp_bar_height)
+			if x == mp_bar_width then
+				bar:alpha(theme_options.bar_alphaMax)
+			else
+				bar:alpha(theme_options.bar_alphaMin)
+			end
+			bar:show()
+        elseif (flag == 5 and current >=2000) then
+			xivbar.tp_bar1_width = tp_bar1_width
+			xivbar.tp_bar2_width = tp_bar2_width
+			xivbar.tp_bar3_width = x
+			ui.tp_bar1:size(tp_bar1_width, tp_bar_height)
+			ui.tp_bar2:size(tp_bar2_width, tp_bar_height)
+			ui.tp_bar3:size(x, tp_bar_height)
+			ui.tp_bar1:show()
+			ui.tp_bar2:show()
+			ui.tp_bar3:show()				
+		elseif (flag == 4 and current >=1000) then
+			xivbar.tp_bar1_width = tp_bar1_width
+			xivbar.tp_bar2_width = x
+			xivbar.tp_bar3_width = 0
+			ui.tp_bar1:size(tp_bar1_width, tp_bar_height)
+			ui.tp_bar2:size(x, tp_bar_height)
+			ui.tp_bar3:size(0, tp_bar_height)
+			ui.tp_bar1:show()
+			ui.tp_bar2:show()
+			ui.tp_bar3:show()
+		elseif (flag == 3 and current < 1000) then
+			xivbar.tp_bar1_width = x
+			xivbar.tp_bar2_width = 0
+			xivbar.tp_bar3_width = 0
+			ui.tp_bar1:size(x, tp_bar_height)
+			ui.tp_bar2:size(0, tp_bar_height)
+			ui.tp_bar3:size(0, tp_bar_height)
+			ui.tp_bar1:show()
+			ui.tp_bar2:show()
+			ui.tp_bar3:show()
+		end
+	end
 
     if flag >= 3 and current >= 1000 then
         text:color(theme_options.full_tp_color_red, theme_options.full_tp_color_green, theme_options.full_tp_color_blue)
@@ -233,16 +216,13 @@ text:text(prefix .. tostring(current))
 
 end
 
--- Updates the job icon. Hides TP bar since it shows as full after changing.
+-- Updates the job icon.
 function update_job(job)
 	xivbar.update_job = false
 	ui:hide()
 	theme_options.bar_jobicon = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/' .. job .. '.png'
 	initialize()
 	ui:show()
---	ui.tp_bar1:hide()
---	ui.tp_bar2:hide()
---	ui.tp_bar3:hide()
 end
 
 -- hide the addon
@@ -257,12 +237,9 @@ function show()
         initialize()
     end
     ui:show()
-
     xivbar.ready = true
-    xivbar.update_hp = true
-    xivbar.update_mp = true
-    xivbar.update_tp = true
 	xivbar.update_job = true
+	update_weapon()
 end
 
 -- Bind Events
@@ -300,28 +277,23 @@ end)
 -- BIND EVENTS
 windower.register_event('hp change', function(new, old)
     player.current_hp = new
-    xivbar.update_hp = true
 end)
 
 windower.register_event('hpp change', function(new, old)
     player.hpp = new
-    xivbar.update_hp = true
 end)
 
 windower.register_event('mp change', function(new, old)
     player.current_mp = new
-    xivbar.update_mp = true
 end)
 
 windower.register_event('mpp change', function(new, old)
     player.mpp = new
-    xivbar.update_mp = true
 end)
 
 windower.register_event('tp change', function(new, old)
     player.current_tp = new
     player:calculate_tpp()
-    xivbar.update_tp = true
 end)
 
 windower.register_event('job change', function(new)
@@ -333,25 +305,15 @@ windower.register_event('prerender', function()
     if xivbar.ready == false then
         return
     end
-
-    if xivbar.update_hp then
         update_bar(ui.hp_bar, ui.hp_text, xivbar.hp_bar_width, player.current_hp, player.hpp, 1)
-    end
-
-    if xivbar.update_mp then
         update_bar(ui.mp_bar, ui.mp_text, xivbar.mp_bar_width, player.current_mp, player.mpp, 2)
-    end
-
-    if xivbar.update_tp then
 		if player.current_tp <= 1000 then update_bar(ui.tp_bar1, ui.tp_text, xivbar.tp_bar1_width, player.current_tp, player.tpp1, 3) end
 		if player.current_tp <= 2000 then update_bar(ui.tp_bar2, ui.tp_text, xivbar.tp_bar2_width, player.current_tp, player.tpp2, 4) end
 		if player.current_tp <= 3000 then update_bar(ui.tp_bar3, ui.tp_text, xivbar.tp_bar3_width, player.current_tp, player.tpp3, 5) end
-    end
 
 	if xivbar.update_job then
 		update_job(player.job)
 	end
-
 end)
 
 windower.register_event('status change', function(new_status_id)
