@@ -14,9 +14,9 @@
             </Color>
             <Font>Planet Opti</Font>
             <FullTpColor>
-                <Blue>255</Blue>
-                <Green>255</Green>
-                <Red>255</Red>
+                <Blue>250</Blue>
+                <Green>180</Green>
+                <Red>80</Red>
             </FullTpColor>
             <Offset>0</Offset>
             <Size>20</Size>

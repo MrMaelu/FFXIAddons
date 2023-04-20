@@ -87,6 +87,9 @@ theme.apply = function (settings)
 	else
 		options.bar_tp3 = defaultpath .. 'tp3_fg.png'
 	end
+	
+	options.bar_weaponicon = defaultpath .. '0.png'
+	options.bar_jobicon = defaultpath .. '0.png'	
 
     options.font = settings.Texts.Font
     options.font_size = settings.Texts.Size

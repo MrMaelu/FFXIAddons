@@ -79,7 +79,6 @@ function setup_text(text, theme_options)
     text:stroke_transparency(theme_options.font_stroke_alpha)
     text:stroke_color(theme_options.font_stroke_color_red, theme_options.font_stroke_color_green, theme_options.font_stroke_color_blue)
     text:stroke_width(theme_options.font_stroke_width)
-    text:right_justified()
 	text:alpha(theme_options.font_alpha)
     text:show()
 end

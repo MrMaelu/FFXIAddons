@@ -8,24 +8,24 @@
         <Texts>
             <Color>
                 <Alpha>220</Alpha>
-                <Blue>250</Blue>
-                <Green>252</Green>
-                <Red>253</Red>
+                <Blue>0</Blue>
+                <Green>0</Green>
+                <Red>0</Red>
             </Color>
-            <Font>Unispace</Font>
+            <Font>Caviar Dreams</Font>
             <FullTpColor>
-                <Blue>255</Blue>
-                <Green>255</Green>
-                <Red>255</Red>
+                <Blue>200</Blue>
+                <Green>216</Green>
+                <Red>0</Red>
             </FullTpColor>
             <Offset>0</Offset>
-            <Size>12</Size>
+            <Size>24</Size>
             <Stroke>
                 <Alpha>100</Alpha>
                 <Blue>0</Blue>
                 <Green>0</Green>
                 <Red>0</Red>
-                <Width>2</Width>
+                <Width>1</Width>
             </Stroke>
             <prefix>false</prefix>
         </Texts>
@@ -34,47 +34,47 @@
                 <alphamax>180</alphamax>
                 <alphamin>150</alphamin>
                 <hp>
-                    <height>17</height>
-                    <posx>11</posx>
-                    <posy>3</posy>
-                    <textx>15</textx>
-                    <texty>-56</texty>
-                    <width>256</width>
+                    <height>30</height>
+                    <posx>0</posx>
+                    <posy>0</posy>
+                    <textx>10</textx>
+                    <texty>-72</texty>
+                    <width>329</width>
                 </hp>
                 <mp>
-                    <height>17</height>
-                    <posx>11</posx>
-                    <posy>27</posy>
-                    <textx>15</textx>
-                    <texty>-32</texty>
-                    <width>256</width>
+                    <height>30</height>
+                    <posx>0</posx>
+                    <posy>34</posy>
+                    <textx>10</textx>
+                    <texty>-38</texty>
+                    <width>329</width>
                 </mp>
                 <tp>
                     <a>
-                        <posx>11</posx>
-                        <posy>51</posy>
-                        <width>72</width>
+                        <posx>0</posx>
+                        <posy>68</posy>
+                        <width>329</width>
                     </a>
                     <b>
-                        <posx>106</posx>
-                        <posy>51</posy>
-                        <width>72</width>
+                        <posx>0</posx>
+                        <posy>68</posy>
+                        <width>329</width>
                     </b>
                     <c>
-                        <posx>195</posx>
-                        <posy>51</posy>
-                        <width>72</width>
+                        <posx>0</posx>
+                        <posy>68</posy>
+                        <width>329</width>
                     </c>
-                    <height>17</height>
-                    <textx>15</textx>
-                    <texty>-8</texty>
+                    <height>30</height>
+                    <textx>10</textx>
+                    <texty>-4</texty>
                 </tp>
             </Bar>
             <DimTpBar>true</DimTpBar>
-            <Name>ffxi_2</Name>
+            <Name>pastel</Name>
             <bgalpha>100</bgalpha>
             <fgalpha>0</fgalpha>
-            <height>71</height>
+            <height>98</height>
             <jisx>0</jisx>
             <jisy>0</jisy>
             <jobiconalpha>0</jobiconalpha>
@@ -84,14 +84,9 @@
             <weaponiconalpha>0</weaponiconalpha>
             <weaponiconposx>0</weaponiconposx>
             <weaponiconposy>0</weaponiconposy>
-            <width>278</width>
+            <width>329</width>
             <wisx>0</wisx>
             <wisy>0</wisy>
         </Theme>
     </global>
-    <maelu>
-        <Bars>
-            <OffsetY>-128</OffsetY>
-        </Bars>
-    </maelu>
 </settings>

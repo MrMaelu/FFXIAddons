@@ -347,12 +347,13 @@ function update_weapon()
 
 	if main_weapon ~= 0 then
 		skill = res.items[main_weapon].skill
-		theme_options.bar_weaponicon = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/' .. skill .. 'w.png'
+		if skill == nil then
+			theme_options.bar_weaponicon = windower.addon_path .. 'data/defaults/0.png'
+		else
+			theme_options.bar_weaponicon = windower.addon_path .. 'themes/' .. settings.Theme.Name .. '/' .. skill .. 'w.png'
+		end
 		initialize()
 		ui:show()
-		ui.tp_bar1:hide()
-		ui.tp_bar2:hide()
-		ui.tp_bar3:hide()
 	elseif not check_weapon or coroutine.status(check_weapon) ~= 'suspended' then
         check_weapon = coroutine.schedule(update_weapon, 10)
     end
