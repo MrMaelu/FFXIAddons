@@ -22,9 +22,9 @@
             <Size>24</Size>
             <Stroke>
                 <Alpha>100</Alpha>
-                <Blue>0</Blue>
-                <Green>0</Green>
-                <Red>0</Red>
+                <Blue>250</Blue>
+                <Green>250</Green>
+                <Red>250</Red>
                 <Width>1</Width>
             </Stroke>
             <prefix>false</prefix>
