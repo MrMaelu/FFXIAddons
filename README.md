@@ -25,7 +25,7 @@ https://user-images.githubusercontent.com/12958339/228695809-7abfd144-df69-4a56-
 2. SirEdeonX themes
 
 ### In-game console options:
-* "xivbar theme ThemeName>" will change theme, if the requested theme exists.
+* "xivbar theme ThemeName" will change theme, if the requested theme exists.
 * "xivbar pos number number" will place the bar at the specified position.
 * "xivbar x number" will move the bar right with positive and left with negative numbers.
 * "xivbar y number" will move the bar down with positive and up with negative numbers.
