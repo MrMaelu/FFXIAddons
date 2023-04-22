@@ -11,7 +11,7 @@
 7. Supports an Elden Ring like death message. Only enabled for the EldenRing theme by default.
 
 ## Added themes:
-![All](https://user-images.githubusercontent.com/12958339/230727473-7589b713-3165-476f-a233-5154d052264b.png)
+![Themes](https://user-images.githubusercontent.com/12958339/233756548-5c40b66a-280a-41a9-8d6c-c6f12214bdc4.png)
 
 ## Theme selector
 https://user-images.githubusercontent.com/12958339/228619252-bd97cb6a-1218-4866-974a-855fbeb141fd.mp4
