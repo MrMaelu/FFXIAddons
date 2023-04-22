@@ -25,12 +25,12 @@ https://user-images.githubusercontent.com/12958339/228695809-7abfd144-df69-4a56-
 2. SirEdeonX themes
 
 ### In-game console options:
-* "xivbar theme <themename>" will change theme, if the requested theme exists.
-* "xivbar pos <number> <number>" will place the bar at the specified position.
-* "xivbar x <number>" will move the bar right with positive and left with negative numbers.
-* "xivbar y <number>" will move the bar down with positive and up with negative numbers.
+* "xivbar theme ThemeName>" will change theme, if the requested theme exists.
+* "xivbar pos number number" will place the bar at the specified position.
+* "xivbar x number" will move the bar right with positive and left with negative numbers.
+* "xivbar y number" will move the bar down with positive and up with negative numbers.
 * "xivbar center" will center the bar on your screen
-* "xivbar scale <number>" will resize the bar by the percentage given, relative to it's default size.
+* "xivbar scale number" will resize the bar by the percentage given, relative to it's default size.
 * "xivbar reset" will reset the current theme to it's default settings and reload the addon.
 * "xivbar save" will save the settings to the theme settings file.
 
