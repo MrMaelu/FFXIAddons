@@ -5,7 +5,7 @@
 ThemeSelector()
 
 Func ThemeSelector()
-	Local $resfolder = @ScriptDir & "/ThemeSelectorResources/"
+	Local $resfolder = @ScriptDir & "\ThemeSelectorResources\"
 	Local $hGUI = GUICreate("ThemeSelector", 770, 280)
 	Local $toptext = GUICtrlCreateLabel("Select the theme you want from the drop-down menu.", 5, 5, 700, 30)
 	GUICtrlSetFont(-1, 20)
